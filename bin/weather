@@ -1,13 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-This is a small python script to download weather data from openweathermap.org
-It's necessary to register in order to get a API ID
-see more info here: http://openweathermap.org/appid
 
-You can find your city ID by searching in:
-http://openweathermap.org/find?q=
-"""
+# Adapted from https://github.com/aanm/conky
 
 import xml.etree.ElementTree as ET
 import os.path, time
@@ -18,33 +12,21 @@ from dateutil.relativedelta import relativedelta
 from collections import defaultdict
 from decimal import Decimal
 
-__author__     = "André Martins"
-__copyright__  = "Copyright 2015"
-__credits__    = "André Martins"
-__license__    = "MIT"
-__version__    = "1.0.2"
-__maintainer__ = "André Martins"
-__email__      = "aanm90@gmail.com"
-__status__     = "Stable"
-
-now = datetime.now()
-
-#  Changeable stuff
 api_id  = "f6e51446b17c5dd5200a424876a03550"
 city_id = "1850144"
 units   = "metric"
 
+now        = datetime.now()
 update     = now - relativedelta(minutes=+30)
 first      = now + relativedelta(hours=+8)
 second     = now + relativedelta(days=+1, hour=12, minutes=0)
 third      = now + relativedelta(days=+2, hour=12, minutes=0)
 conky_file = '/tmp/conky_results'
 
-# Non-changable stuff
 current_weather = '/tmp/conky_current.xml'
 forecast        = '/tmp/conky_forecast.xml'
 
-# Checking the last time an update was made
+# Check the last time an update was made
 update_file = True
 if os.path.isfile(current_weather) and os.path.isfile(forecast):
      last_update = parse(time.ctime(os.path.getmtime(current_weather)))
@@ -223,6 +205,7 @@ for time_entry in time_entries:
         moments[i][hour] = moments[i][time]
         moments[i][day]  = weekday[int(moments[i][time].weekday())]
         moments[i][prec] = time_entry.find('precipitation').get('value')
+        moments[i][prec] = 0 if moments[i][prec] is None else round(moments[i][prec])
 
         i += 1
         if i >= len(moments):
@@ -235,7 +218,7 @@ hours, remainder     = divmod(elapsed_since_update.seconds, 3600)
 minutes, seconds     = divmod(remainder, 60)
 last_update_text     = "{0} minutes ago".format(minutes) if hours == 0 else "{0} hours ago".format(hours)
 
-# Write conky file
+# Write the conky file
 f = open(conky_file, 'w')
 f.write('{0}, {1}\n'.format(city_name, country_name))
 f.write('{0}\n'.format(str(moments[0][icon])))
@@ -254,7 +237,7 @@ for index in moments:
     days      += (str(moments[index][day]), )
     max_temps += (str(moments[index][max_temp]) + temp_unit, )
     min_temps += (str(moments[index][min_temp]) + temp_unit, )
-    precs     += (str(moments[index][prec]), )
+    precs     += ('{0} mm'.format(str(moments[index][prec])), )
 
 f.write('{:^10}{:^10}{:^10}\n'.format(days[0], days[1], days[2]))
 f.write('{:^10}{:^10}{:^10}\n'.format(max_temps[0], max_temps[1], max_temps[2]))
