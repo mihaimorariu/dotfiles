@@ -18,7 +18,7 @@ set $YELLOW    #FFFF87
 set $RED       #FF4D4D
 
 set $DUNST_PATH     $HOME/.i3/dunstrc
-set $WALLPAPER_PATH $HOME/pictures/gnu-wallpaper-16.png
+set $WALLPAPER_PATH $HOME/.wallpaper.png
 set $CONKY_PATH     $HOME/.dotfiles/i3/conkyrc
 set $STATUS_PATH    $HOME/.dotfiles/i3/status.toml
 
