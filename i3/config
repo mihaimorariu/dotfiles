@@ -1,29 +1,29 @@
 # Set variables
-set $workspace1 "dev"
-set $workspace2 "web"
-set $workspace3 "chat"
-set $workspace4 "mail"
-set $workspace5 "audio"
-set $workspace6 "video"
-set $workspace7 "vis"
-set $workspace8 "doc"
-set $workspace9 "term"
-set $workspace0 "other"
+set $WORKSPACE1 " dev"
+set $WORKSPACE2 " web"
+set $WORKSPACE3 " chat"
+set $WORKSPACE4 " mail"
+set $WORKSPACE5 " audio"
+set $WORKSPACE6 " video"
+set $WORKSPACE7 " vis"
+set $WORKSPACE8 " doc"
+set $WORKSPACE9 " term"
+set $WORKSPACE0 " other"
 
-set $black     #1D1010
-set $darkgrey  #1D1F21
-set $lightgrey #454A4F
-set $white     #F0F0F0
-set $yellow    #FFFF87
-set $red       #FF4D4D
+set $BLACK     #1D1010
+set $DARKGREY  #1D1F21
+set $LIGHTGREY #454A4F
+set $WHITE     #F0F0F0
+set $YELLOW    #FFFF87
+set $RED       #FF4D4D
 
-set $wallpaper_path ~/pictures/gnu-wallpaper-16.png
-set $conky_path     ~/.dotfiles/.i3/conkyrc
-set $lemonbar_path  ~/.dotfiles/.i3/lemonbar/i3_lemonbar.sh
-set $dunst_path     ~/.i3/dunstrc
+set $DUNST_PATH     $HOME/.i3/dunstrc
+set $WALLPAPER_PATH $HOME/pictures/gnu-wallpaper-16.png
+set $CONKY_PATH     $HOME/.dotfiles/i3/conkyrc
+set $STATUS_PATH    $HOME/.dotfiles/i3/status.toml
 
 # Font family and size
-font xft:DejaVu Sans Mono for Powerline 8
+font pango:DejaVu Sans Mono for Powerline 8
 
 # Set the modifier key (Win key)
 set $mod Mod4
@@ -82,28 +82,28 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # Switch to workspace
-bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5
-bindsym $mod+6 workspace $workspace6
-bindsym $mod+7 workspace $workspace7
-bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace $workspace9
-bindsym $mod+0 workspace $workspace0
+bindsym $mod+1 workspace $WORKSPACE1
+bindsym $mod+2 workspace $WORKSPACE2
+bindsym $mod+3 workspace $WORKSPACE3
+bindsym $mod+4 workspace $WORKSPACE4
+bindsym $mod+5 workspace $WORKSPACE5
+bindsym $mod+6 workspace $WORKSPACE6
+bindsym $mod+7 workspace $WORKSPACE7
+bindsym $mod+8 workspace $WORKSPACE8
+bindsym $mod+9 workspace $WORKSPACE9
+bindsym $mod+0 workspace $WORKSPACE0
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+6 move container to workspace $workspace6
-bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace $workspace9
-bindsym $mod+Shift+0 move container to workspace $workspace0
+bindsym $mod+Shift+1 move container to workspace $WORKSPACE1
+bindsym $mod+Shift+2 move container to workspace $WORKSPACE2
+bindsym $mod+Shift+3 move container to workspace $WORKSPACE3
+bindsym $mod+Shift+4 move container to workspace $WORKSPACE4
+bindsym $mod+Shift+5 move container to workspace $WORKSPACE5
+bindsym $mod+Shift+6 move container to workspace $WORKSPACE6
+bindsym $mod+Shift+7 move container to workspace $WORKSPACE7
+bindsym $mod+Shift+8 move container to workspace $WORKSPACE8
+bindsym $mod+Shift+9 move container to workspace $WORKSPACE9
+bindsym $mod+Shift+0 move container to workspace $WORKSPACE0
 
 bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Up move workspace to output up
@@ -112,28 +112,39 @@ bindsym $mod+Control+Right move workspace to output right
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
-  # These bindings trigger as soon as you enter the resize mode
-  bindsym j resize shrink width 5 px or 5 ppt
-  bindsym k resize grow height 5 px or 5 ppt
-  bindsym l resize shrink height 5 px or 5 ppt
-  bindsym semicolon resize grow width 5 px or 5 ppt
+	# These bindings trigger as soon as you enter the resize mode
+	bindsym j resize shrink width 5 px or 5 ppt
+	bindsym k resize grow height 5 px or 5 ppt
+	bindsym l resize shrink height 5 px or 5 ppt
+	bindsym semicolon resize grow width 5 px or 5 ppt
 
-  # Same bindings, but for the arrow keys
-  bindsym Left resize shrink width 5 px or 5 ppt
-  bindsym Down resize grow height 5 px or 5 ppt
-  bindsym Up resize shrink height 5 px or 5 ppt
-  bindsym Right resize grow width 5 px or 5 ppt
+	# Same bindings, but for the arrow keys
+	bindsym Left resize shrink width 5 px or 5 ppt
+	bindsym Down resize grow height 5 px or 5 ppt
+	bindsym Up resize shrink height 5 px or 5 ppt
+	bindsym Right resize grow width 5 px or 5 ppt
 
-  # Back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
+	# Back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 # Display workspace and status bar
 bar {
-  i3bar_command $lemonbar_path
+	font pango:DejaVu Sans Mono for Powerline, FontAwesome 8
+	position top
+	status_command i3status-rs --exit-on-error $STATUS_PATH
+	colors {
+		separator  #666666
+		background #222222
+		statusline #DDDDDD
+		focused_workspace  #0088CC #0088CC #FFFFFF
+		active_workspace   #333333 #333333 #FFFFFF
+		inactive_workspace #333333 #333333 #888888
+		urgent_workspace   #2f343a #900000 #FFFFFF
+	}
 }
 
 # Reload the configuration file
@@ -151,17 +162,17 @@ smart_borders on
 focus_follows_mouse no
 
 # Class                 Border       Backgr.      Text        Split
-client.focused_inactive $lightgrey   $lightgrey   $lightgrey  $lightgrey
-client.focused          $darkgrey    $darkgrey    $yellow     $yellow
-client.unfocused        $darkgrey    $darkgrey    $white      $white
-client.urgent           $red         $red         $black      $black
-client.background       $yellow
+client.focused_inactive $LIGHTGREY   $LIGHTGREY   $LIGHTGREY  $LIGHTGREY
+client.focused          $DARKGREY    $DARKGREY    $YELLOW     $YELLOW
+client.unfocused        $DARKGREY    $DARKGREY    $WHITE      $WHITE
+client.urgent           $RED         $RED         $BLACK      $BLACK
+client.background       $YELLOW
 
 # Execute on startup
-exec --no-startup-id dunst -config $dunst_path
+exec --no-startup-id dunst -config $DUNST_PATH
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support
 
 # Set up monitors
 exec --no-startup-id xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --left-of HDMI-1
-exec --no-startup-id feh --bg-scale $wallpaper_path
-exec --no-startup-id conky -c $conky_path
+exec --no-startup-id feh --bg-scale $WALLPAPER_PATH
+exec --no-startup-id conky -c $CONKY_PATH
