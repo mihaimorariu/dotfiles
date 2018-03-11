@@ -24,51 +24,40 @@ conky.config = {
 	use_spacer = 'right',
 	use_xft = true,
 	xftalpha = 0.1,
-
-	template0 = [[${exec sed -n \1p /tmp/conky_results}]],
-	template1 = [[${font DejaVu Sans Mono for Powerline:\1:\size=\2}]],
+	template0 = [[${font DejaVu Sans Mono for Powerline:\1:\size=\2}]],
 }
 
 conky.text = [[
-${template1 bold 8}${color tomato}SYSTEM ${color gray80} ${hr 2}${font}
+${template0 bold 8}${color tomato}SYSTEM ${color gray80} ${hr 2}${font}
 ${color gray80}$sysname $kernel $alignr $machine
 ${exec cat -n /proc/cpuinfo | grep 'model name' | sed 's/.*:[ ]*\(.*\)[ ]*@.*/\1/' | uniq}${alignr}${freq_g cpu0}GHz
 Uptime ${alignr}${uptime}
 File System ${alignr}${fs_type}
 
-${template1 bold 8}${color tomato}PROCESSORS ${color gray80}${hr 2}${font}
+${template0 bold 8}${color tomato}PROCESSORS ${color gray80}${hr 2}${font}
 ${color gray80}CPU1  ${cpu cpu1}% ${cpubar cpu1}
 CPU2  ${cpu cpu2}% ${cpubar cpu2}
 CPU3  ${cpu cpu3}% ${cpubar cpu3}
 CPU4  ${cpu cpu4}% ${cpubar cpu4}
 
-${template1 bold 8}${color tomato}MEMORY ${color gray80}${hr 2}${font}
+${template0 bold 8}${color tomato}MEMORY ${color gray80}${hr 2}${font}
 ${color gray80}MEM $alignc ${mem} / ${memmax} $alignr ${memperc}%
 ${membar}
 
-${template1 bold 8}${color tomato}HDD ${color gray80}${hr 2}${font}
+${template0 bold 8}${color tomato}HDD ${color gray80}${hr 2}${font}
 ${color gray80}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
 ${fs_bar /}
 /home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
 ${fs_bar /home}
 
-${template1 bold 8}${color tomato}TOP PROCESSES ${color gray80}${hr 2}${font}
+${template0 bold 8}${color tomato}TOP PROCESSES ${color gray80}${hr 2}${font}
 ${color gray80}${top_mem name 2}${alignr}${top mem 2} %
 ${top_mem name 3}${alignr}${top mem 3} %
 ${top_mem name 4}${alignr}${top mem 4} %
 ${top_mem name 5}${alignr}${top mem 5} %
-${execi 500 python $HOME/.dotfiles/bin/weather}
-${template1 bold 8}${color tomato}WEATHER ${color gray80}${hr 2}${font}
-
-${template1 bold 8}${template0 1}${font}
-
-Temperature:   ${template0 3}
-Precipitation: ${template0 4}
-Last update:   ${template0 5}
-${alignr}${voffset -50}${font ConkyWeather:size=50}${template0 2}${font}
-${template1 bold 8}${color tomato}FORECAST ${color gray80}${hr 2}${font}
-               ${template1 bold 8}${template0 6}${font}
-High:          ${template0 7}
-Low:           ${template0 8}
-Precipitation: ${template0 9}
+${top_mem name 6}${alignr}${top mem 6} %
+${top_mem name 7}${alignr}${top mem 7} %
+${top_mem name 8}${alignr}${top mem 8} %
+${top_mem name 8}${alignr}${top mem 9} %
+${top_mem name 10}${alignr}${top mem 10} %
 ]]
