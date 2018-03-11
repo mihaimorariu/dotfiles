@@ -1,0 +1,263 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+This is a small python script to download weather data from openweathermap.org
+It's necessary to register in order to get a API ID
+see more info here: http://openweathermap.org/appid
+
+You can find your city ID by searching in:
+http://openweathermap.org/find?q=
+"""
+
+import xml.etree.ElementTree as ET
+import os.path, time
+import urllib.request
+from datetime import datetime
+from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
+from collections import defaultdict
+from decimal import Decimal
+
+__author__     = "André Martins"
+__copyright__  = "Copyright 2015"
+__credits__    = "André Martins"
+__license__    = "MIT"
+__version__    = "1.0.2"
+__maintainer__ = "André Martins"
+__email__      = "aanm90@gmail.com"
+__status__     = "Stable"
+
+now = datetime.now()
+
+#  Changeable stuff
+api_id  = "f6e51446b17c5dd5200a424876a03550"
+city_id = "1850144"
+units   = "metric"
+
+update     = now - relativedelta(minutes=+30)
+first      = now + relativedelta(hours=+8)
+second     = now + relativedelta(days=+1, hour=12, minutes=0)
+third      = now + relativedelta(days=+2, hour=12, minutes=0)
+conky_file = '/tmp/conky_results'
+
+# Non-changable stuff
+current_weather = '/tmp/conky_current.xml'
+forecast        = '/tmp/conky_forecast.xml'
+
+# Checking the last time an update was made
+update_file = True
+if os.path.isfile(current_weather) and os.path.isfile(forecast):
+     last_update = parse(time.ctime(os.path.getmtime(current_weather)))
+     update_file = update >= last_update
+
+if update_file:
+     urllib.request.urlretrieve("http://api.openweathermap.org/data/2.5/weather?id="  + city_id + "&appid=" + api_id + "&mode=xml&units=" + units + "", current_weather)
+     urllib.request.urlretrieve("http://api.openweathermap.org/data/2.5/forecast?id=" + city_id + "&appid=" + api_id + "&mode=xml&units=" + units + "", forecast)
+     urllib.request.urlcleanup()
+
+# Hack to reuse inside the same list for the current and next moments
+# next_moment_index_data = current_moment_index_data = value
+time                = 0
+last_current_update = 0
+day                 = 1
+hour                = 2
+cur_temp            = 2
+max_temp            = 3
+min_temp            = 4
+icon                = 5
+prec                = 6
+
+moments = defaultdict(list)
+moments[0] = [now,    None, None, None, None, '-', None]
+moments[1] = [first,  None, None, None, None, '-', None]
+moments[2] = [second, None, None, None, None, '-', None]
+moments[3] = [third,  None, None, None, None, '-', None]
+
+weekday    = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+temp_units = {'metric':'ºC', 'imperial':'ºF'}
+
+# Table made accordingly with http://openweathermap.org/weather-conditions
+# icons[ID] = [Day, Night, Description]
+icons      = defaultdict(list)
+icons[200] = ['k', 'K', 'thunderstorm with light rain']
+icons[201] = ['l', 'l', 'thunderstorm with rain']
+icons[202] = ['m', 'm', 'thunderstorm with heavy rain']
+icons[210] = ['l', 'l', 'light thunderstorm']
+icons[211] = ['l', 'l', 'thunderstorm']
+icons[212] = ['n', 'n', 'heavy thunderstorm']
+icons[221] = ['n', 'n', 'ragged thunderstorm']
+icons[230] = ['l', 'l', 'thunderstorm with light drizzle']
+icons[231] = ['m', 'm', 'thunderstorm with drizzle']
+icons[232] = ['m', 'm', 'thunderstorm with heavy drizzle']
+icons[300] = ['g', 'G', 'light intensity drizzle']
+icons[301] = ['s', 's', 'drizzle']
+icons[302] = ['t', 't', 'heavy intensity drizzle']
+icons[310] = ['g', 'G', 'light intensity drizzle rain']
+icons[311] = ['h', 'h', 'drizzle rain']
+icons[312] = ['i', 'i', 'heavy intensity drizzle rain']
+icons[313] = ['j', 'j', 'shower rain and drizzle']
+icons[314] = ['j', 'j', 'heavy shower rain and drizzle']
+icons[321] = ['j', 'j', 'shower drizzle']
+icons[500] = ['g', 'G', 'light rain']
+icons[501] = ['h', 'h', 'moderate rain']
+icons[502] = ['i', 'i', 'heavy intensity rain']
+icons[503] = ['j', 'j', 'very heavy rain']
+icons[504] = ['j', 'j', 'extreme rain']
+icons[511] = ['x', 'x', 'freezing rain']
+icons[520] = ['g', 'G', 'light intensity shower rain']
+icons[521] = ['h', 'h', 'shower rain']
+icons[522] = ['i', 'i', 'heavy intensity shower rain']
+icons[531] = ['j', 'j', 'ragged shower rain']
+icons[600] = ['o', 'O', 'light snow']
+icons[601] = ['p', 'p', 'snow']
+icons[602] = ['q', 'q', 'heavy snow']
+icons[611] = ['y', 'y', 'sleet']
+icons[612] = ['x', 'x', 'shower sleet']
+icons[615] = ['x', 'x', 'light rain and snow']
+icons[616] = ['x', 'x', 'rain and snow']
+icons[620] = ['x', 'x', 'light shower snow']
+icons[621] = ['x', 'x', 'shower snow']
+icons[622] = ['x', 'x', 'heavy shower snow']
+icons[701] = ['0', '0', 'mist']
+icons[711] = ['0', '0', 'smoke']
+icons[721] = ['0', '0', 'haze']
+icons[731] = ['7', '7', 'sand', 'dust whirls']
+icons[741] = ['0', '0', 'fog']
+icons[751] = ['7', '7', 'sand']
+icons[761] = ['7', '7', 'dust']
+icons[762] = ['7', '7', 'volcanic ash']
+icons[771] = ['6', '6', 'squalls']
+icons[781] = ['1', '1', 'tornado']
+icons[800] = ['a', 'A', 'clear sky']
+icons[801] = ['b', 'B', 'few clouds']
+icons[802] = ['c', 'C', 'scattered clouds']
+icons[803] = ['d', 'D', 'broken clouds']
+icons[804] = ['e', 'f', 'overcast clouds']
+icons[900] = ['1', '1', 'tornado']
+icons[901] = ['2', '2', 'tropical storm']
+icons[902] = ['3', '3', 'hurricane']
+icons[903] = ['4', '4', 'cold']
+icons[904] = ['5', '5', 'hot']
+icons[905] = ['6', '6', 'windy']
+icons[906] = ['u', 'u', 'hail']
+icons[951] = ['a', 'A', 'calm']
+icons[952] = ['9', '9', 'light breeze']
+icons[953] = ['9', '9', 'gentle breeze']
+icons[954] = ['9', '9', 'moderate breeze']
+icons[955] = ['9', '9', 'fresh breeze']
+icons[956] = ['6', '6', 'strong breeze']
+icons[957] = ['6', '6', 'high wind', 'near gale']
+icons[958] = ['6', '6', 'gale']
+icons[959] = ['6', '6', 'severe gale']
+icons[960] = ['2', '2', 'storm']
+icons[961] = ['3', '3', 'violent storm']
+icons[962] = ['4', '4', 'hurricane']
+
+def is_night(time, sunrise, sunset):
+    return int(time < sunrise or time > sunset)
+
+def calc_min_max_temp(time, time_entries):
+    max_temperature = int(round(Decimal(time_entries[0].find('temperature').get('max'))))
+    min_temperature = int(round(Decimal(time_entries[0].find('temperature').get('min'))))
+
+    for time_entry in time_entries:
+        time_from = parse(time_entry.get('from'))
+        time_to = parse(time_entry.get('to'))
+
+        if time.day == time_from.day and time.day == time_to.day:
+            max_temp = int(round(Decimal((time_entry.find('temperature').get('max')))))
+            min_temp = int(round(Decimal((time_entry.find('temperature').get('min')))))
+
+            if max_temp > max_temperature:
+                max_temperature = max_temp
+            if min_temp < min_temperature:
+                min_temperature = min_temp
+
+    return (min_temperature, max_temperature)
+
+# Get info for today
+tree    = ET.parse(current_weather)
+current = tree.getroot()
+city    = current.find('city')
+country = city.find('country')
+sun     = city.find('sun')
+sunrise = parse(sun.get('rise'))
+sunset  = parse(sun.get('set'))
+night   = is_night(now, sunrise, sunset)
+
+i = 0
+
+moments[i][icon]     = icons[int(current.find('weather').get('number'))][night]
+moments[i][day]      = weekday[int(sunrise.weekday())]
+moments[i][cur_temp] = int(round(Decimal((current.find('temperature').get('value')))))
+p_mode               = current.find('precipitation').get('mode')
+
+if p_mode != 'no':
+    moments[i][prec] = int(round(Decimal((current.find('precipitation').get('value')))))
+
+temp_unit                       = temp_units[str(current.find('temperature').get('unit'))]
+moments[i][last_current_update] = parse(current.find('lastupdate').get('value'))
+
+# Get info for the following days
+tree = ET.parse(forecast)
+root = tree.getroot()
+
+i += 1
+
+time_entries = root.findall('forecast/time')
+for time_entry in time_entries:
+    time_from = parse(time_entry.get('from'))
+    time_to = parse(time_entry.get('to'))
+
+    if moments[i][time] > time_from and moments[i][time] < time_to:
+        next_year  = moments[i][time].year
+        next_month = moments[i][time].month
+        next_day   = moments[i][time].day
+        sunrise    = sunrise + relativedelta(year = next_year, month = next_month, day = next_day)
+        sunset     = sunset + relativedelta(year  = next_year, month = next_month, day = next_day)
+        night      = is_night(moments[i][time], sunrise, sunset)
+
+        (moments[i][min_temp], moments[i][max_temp]) = calc_min_max_temp(moments[i][time], time_entries)
+
+        moments[i][icon] = icons[int(time_entry.find('symbol').get('number'))][night]
+        moments[i][hour] = moments[i][time]
+        moments[i][day]  = weekday[int(moments[i][time].weekday())]
+        moments[i][prec] = time_entry.find('precipitation').get('value')
+
+        i += 1
+        if i >= len(moments):
+            break
+
+city_name            = city.get('name').upper()
+country_name         = country.text.upper()
+elapsed_since_update = now - moments[0][last_current_update]
+hours, remainder     = divmod(elapsed_since_update.seconds, 3600)
+minutes, seconds     = divmod(remainder, 60)
+last_update_text     = "{0} minutes ago".format(minutes) if hours == 0 else "{0} hours ago".format(hours)
+
+# Write conky file
+f = open(conky_file, 'w')
+f.write('{0}, {1}\n'.format(city_name, country_name))
+f.write('{0}\n'.format(str(moments[0][icon])))
+f.write('{0:^20}\n'.format(str(moments[0][cur_temp]) + temp_unit))
+f.write('{0:^20}\n'.format(str(moments[0][prec])))
+f.write('{0:^20}\n'.format(last_update_text))
+
+del moments[0]
+
+days      = ()
+max_temps = ()
+min_temps = ()
+precs     = ()
+
+for index in moments:
+    days      += (str(moments[index][day]), )
+    max_temps += (str(moments[index][max_temp]) + temp_unit, )
+    min_temps += (str(moments[index][min_temp]) + temp_unit, )
+    precs     += (str(moments[index][prec]), )
+
+f.write('{:^10}{:^10}{:^10}\n'.format(days[0], days[1], days[2]))
+f.write('{:^10}{:^10}{:^10}\n'.format(max_temps[0], max_temps[1], max_temps[2]))
+f.write('{:^10}{:^10}{:^10}\n'.format(min_temps[0], min_temps[1], min_temps[2]))
+f.write('{:^10}{:^10}{:^10}\n'.format(precs[0], precs[1], precs[2]))
+f.close()

@@ -1,0 +1,167 @@
+# Set variables
+set $workspace1 "dev"
+set $workspace2 "web"
+set $workspace3 "chat"
+set $workspace4 "mail"
+set $workspace5 "audio"
+set $workspace6 "video"
+set $workspace7 "vis"
+set $workspace8 "doc"
+set $workspace9 "term"
+set $workspace0 "other"
+
+set $black     #1D1010
+set $darkgrey  #1D1F21
+set $lightgrey #454A4F
+set $white     #F0F0F0
+set $yellow    #FFFF87
+set $red       #FF4D4D
+
+set $wallpaper_path ~/pictures/gnu-wallpaper-16.png
+set $conky_path     ~/.dotfiles/.i3/conkyrc
+set $lemonbar_path  ~/.dotfiles/.i3/lemonbar/i3_lemonbar.sh
+set $dunst_path     ~/.i3/dunstrc
+
+# Font family and size
+font xft:DejaVu Sans Mono for Powerline 8
+
+# Set the modifier key (Win key)
+set $mod Mod4
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start rofi (a program launcher)
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi"
+
+# Lock screen
+bindsym $mod+l exec --no-startup-id "i3lock -c 000000 -u"
+
+# Screen brightness control
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
+# Control volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split in horizontal orientation
+bindsym $mod+h split h
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace0
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace0
+
+bindsym $mod+Control+Left move workspace to output left
+bindsym $mod+Control+Up move workspace to output up
+bindsym $mod+Control+Down move workspace to output down
+bindsym $mod+Control+Right move workspace to output right
+
+# Resize window (you can also use the mouse for that)
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+  bindsym j resize shrink width 5 px or 5 ppt
+  bindsym k resize grow height 5 px or 5 ppt
+  bindsym l resize shrink height 5 px or 5 ppt
+  bindsym semicolon resize grow width 5 px or 5 ppt
+
+  # Same bindings, but for the arrow keys
+  bindsym Left resize shrink width 5 px or 5 ppt
+  bindsym Down resize grow height 5 px or 5 ppt
+  bindsym Up resize shrink height 5 px or 5 ppt
+  bindsym Right resize grow width 5 px or 5 ppt
+
+  # Back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Display workspace and status bar
+bar {
+  i3bar_command $lemonbar_path
+}
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3
+bindsym $mod+Shift+r restart
+
+# Window appearance
+for_window [class="^.*"] border pixel 0
+
+gaps outer 0
+gaps inner 3
+smart_borders on
+focus_follows_mouse no
+
+# Class                 Border       Backgr.      Text        Split
+client.focused_inactive $lightgrey   $lightgrey   $lightgrey  $lightgrey
+client.focused          $darkgrey    $darkgrey    $yellow     $yellow
+client.unfocused        $darkgrey    $darkgrey    $white      $white
+client.urgent           $red         $red         $black      $black
+client.background       $yellow
+
+# Execute on startup
+exec --no-startup-id dunst -config $dunst_path
+exec --no-startup-id gpg-agent --daemon --enable-ssh-support
+
+# Set up monitors
+exec --no-startup-id xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --left-of HDMI-1
+exec --no-startup-id feh --bg-scale $wallpaper_path
+exec --no-startup-id conky -c $conky_path

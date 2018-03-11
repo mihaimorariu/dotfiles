@@ -1,0 +1,25 @@
+background no
+format_human_readable true
+if_up_strictness address
+out_to_console yes
+out_to_x no
+override_utf8_locale yes
+short_units yes
+total_run_times 0
+update_interval 2
+uppercase no
+
+TEXT
+SYS\
+${time %a %d %b %H:%M} \
+${cpu} \
+${memperc} \
+${fs_used_perc /} \
+${fs_used_perc /home} \
+${battery_percent} \
+${if_up wlp2s0}${downspeedf wlp2s0} ${upspeedf wlp2s0} \
+${else}down down${endif} \
+${if_up enp3s0}${downspeedf enp3s0} ${upspeedf enp3s0} \
+${else}down down${endif} \
+${battery_percent}\
+
