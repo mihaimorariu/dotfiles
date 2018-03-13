@@ -12,7 +12,6 @@ plugins=(
 )
 
 [[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
-[[ -f /opt/ros/lunar/setup.zsh ]] && source /opt/ros/lunar/setup.zsh
 
 source $ZSH/oh-my-zsh.sh
 source $ZSH_SH_DIR/zsh-syntax-highlighting.zsh

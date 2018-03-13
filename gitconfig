@@ -1,5 +1,13 @@
 [core]
-    editor = vim
+	editor = vim
 [user]
-    name = Mihai Morariu
-    email = mihaimorariu@gmail.com
+	name = Mihai Morariu
+	email = mihaimorariu@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	sdiff = !git diff && git submodule foreach 'git diff'
+	spush = push --recurse-submodules=check
+	supdate = submodule update --remote --merge
