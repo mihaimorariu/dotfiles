@@ -11,10 +11,10 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
+[ ! -d $ZSH_CACHE_DIR ] && mkdir $ZSH_CACHE_DIR
 
 source $ZSH/oh-my-zsh.sh
 source $ZSH_SH_DIR/zsh-syntax-highlighting.zsh
 
 ZSH_LOCAL=$HOME/.zshrc.local
-[[ ! -f $ZSH_LOCAL ]] && source $ZSH_LOCAL
+[ -f $ZSH_LOCAL ] && source $ZSH_LOCAL
