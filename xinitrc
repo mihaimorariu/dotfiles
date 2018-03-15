@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Load Xresources, if it exists
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+[ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
 # Disable screensaver and turn off screen after 10 minutes
 xset s off
