@@ -135,7 +135,7 @@ bindsym $mod+r mode "resize"
 bar {
 	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
 	position top
-	status_command i3status-rs --exit-on-error $STATUS_PATH
+	status_command i3status-rs $STATUS_PATH
 	colors {
 		separator  #666666
 		background #222222
