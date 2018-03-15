@@ -23,7 +23,7 @@ set $CONKY_PATH     $HOME/.dotfiles/i3/conkyrc
 set $STATUS_PATH    $HOME/.dotfiles/i3/status.toml
 
 # Font family and size
-font pango:DejaVu Sans Mono for Powerline 8
+font pango:DejaVu Sans Mono for Powerline 9
 
 # Set the modifier key (Win key)
 set $mod Mod4
@@ -133,7 +133,7 @@ bindsym $mod+r mode "resize"
 
 # Display workspace and status bar
 bar {
-	font pango:DejaVu Sans Mono for Powerline, FontAwesome 8
+	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
 	position top
 	status_command i3status-rs --exit-on-error $STATUS_PATH
 	colors {

@@ -2,7 +2,7 @@
     alignment = center
     bounce_freq = 0
     follow = none
-    font = DejaVu Sans 8
+    font = DejaVu Sans 9
     format = "<b>%a</b>\n%s\n%b"
     frame_color = "#66BAFF"
     frame_width = 2
