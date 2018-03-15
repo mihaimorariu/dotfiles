@@ -12,8 +12,8 @@ buttons = ["play", "next"]
 
 [[block]]
 block = "battery"
-interval = 10
-show = "both"
+interval = 60
+show = "percentage"
 
 [[block]]
 block = "weather"
