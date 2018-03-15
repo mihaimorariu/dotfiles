@@ -162,11 +162,11 @@ smart_borders on
 focus_follows_mouse no
 
 # Class                 Border       Backgr.      Text        Split
-client.focused_inactive $LIGHTGREY   $LIGHTGREY   $LIGHTGREY  $LIGHTGREY
-client.focused          $DARKGREY    $DARKGREY    $YELLOW     $YELLOW
+client.focused_inactive $LIGHTGREY   $LIGHTGREY   $WHITE      $WHITE
+client.focused          $LIGHTGREY   $LIGHTGREY   $WHITE      $WHITE
 client.unfocused        $DARKGREY    $DARKGREY    $WHITE      $WHITE
-client.urgent           $RED         $RED         $BLACK      $BLACK
-client.background       $YELLOW
+client.urgent           $RED         $RED         $WHITE      $WHITE
+client.background       $WHITE
 
 # Execute on startup
 exec --no-startup-id dunst -config $DUNST_PATH
