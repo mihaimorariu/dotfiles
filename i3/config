@@ -20,7 +20,7 @@ set $RED       #FF4D4D
 set $DUNST_PATH     $HOME/.i3/dunstrc
 set $WALLPAPER_PATH $HOME/.wallpaper.png
 set $CONKY_PATH     $HOME/.dotfiles/i3/conkyrc
-set $STATUS_PATH    $HOME/.dotfiles/i3/status.toml
+set $STATUS_PATH    $HOME/.dotfiles/i3/conkyrc_status
 
 # Font family and size
 font pango:DejaVu Sans Mono for Powerline 9
@@ -135,7 +135,7 @@ bindsym $mod+r mode "resize"
 bar {
 	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
 	position top
-	status_command i3status-rs $STATUS_PATH
+	status_command conky -c $STATUS_PATH
 	colors {
 		separator  #666666
 		background #222222
@@ -174,4 +174,4 @@ exec --no-startup-id gpg-agent --daemon --enable-ssh-support
 
 # Set up monitors
 exec --no-startup-id feh --bg-scale $WALLPAPER_PATH
-exec --no-startup-id conky -c $CONKY_PATH
+#exec --no-startup-id conky -c $CONKY_PATH
