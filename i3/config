@@ -1,18 +1,21 @@
 # Set variables
-set $WORKSPACE1    " dev"
-set $WORKSPACE2    " web"
-set $WORKSPACE3    " chat"
-set $WORKSPACE4    " mail"
-set $WORKSPACE5    " audio"
-set $WORKSPACE6    " video"
-set $WORKSPACE7    " vis"
-set $WORKSPACE8    " doc"
-set $WORKSPACE9    " term"
-set $WORKSPACE0    " other"
+set $WORKSPACE1    " dev "
+set $WORKSPACE2    " web "
+set $WORKSPACE3    " chat "
+set $WORKSPACE4    " mail "
+set $WORKSPACE5    " audio "
+set $WORKSPACE6    " video "
+set $WORKSPACE7    " vis "
+set $WORKSPACE8    " doc "
+set $WORKSPACE9    " term "
+set $WORKSPACE0    " other "
+
 
 set $BLACK          #000000
 set $DARK_GRAY      #1d1f21
-set $GOLD           #708090
+set $GOLD           #f0e68c
+set $GOLDEN_ROD     #daa520
+set $NAVAJO_WHITE   #ffdead
 set $ORANGE_RED     #ff4500
 set $RED            #ff0000
 set $SANDY_BROWN    #f4a460
@@ -142,12 +145,12 @@ bar {
 	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
 	position top
 	status_command $STATUS_COMMAND
-	separator_symbol "  "
+	separator_symbol "   "
 	colors {
-		separator             $SLATE_GRAY
+		separator             $WHITE
 		background            $DARK_GRAY
 		statusline            $DARK_GRAY
-		focused_workspace     $STEEL_BLUE     $STEEL_BLUE    $WHITE
+		focused_workspace     $DARK_GRAY      $DARK_GRAY     $YELLOW
 		active_workspace      $DARK_GRAY      $DARK_GRAY     $WHITE
 		inactive_workspace    $DARK_GRAY      $DARK_GRAY     $WHITE
 		urgent_workspace      $TOMATO         $TOMATO        $WHITE
