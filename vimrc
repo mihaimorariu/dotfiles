@@ -53,7 +53,7 @@ let g:python_recommended_style = 0
 Plug 'vim-scripts/The-NERD-commenter'
 Plug 'junegunn/vim-plug'
 Plug 'Valloric/YouCompleteMe'
-"Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 "Plug 'vim-scripts/surround.vim'
 "Plug 'vim-scripts/repeat.vim'
 "Plug 'vim-scripts/speeddating.vim'
