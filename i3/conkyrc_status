@@ -13,8 +13,25 @@ conky.config = {
 	total_run_times = 0,
 	update_interval = 5,
 	use_xft = true,
+	template0 = '${battery_percent BAT0}',
 }
 
 conky.text = [[
-${font FontAwesome:size=9}${font} ${time %H:%M}
+${font FontAwesome:size=9}  ${font} \
+${if_match ${template0} >= 95}\
+${else}
+${if_match ${template0} >= 50}\
+${else}
+${if_match ${template0} >= 25}\
+${else}\
+${endif}\
+${endif}\
+${endif}\
+ ${color goldenrod1}${template0}% \
+${font FontAwesome:size=9}    ${font}${memperc}% \
+${font FontAwesome:size=9}    ${font}${cpu}% \
+${font FontAwesome:size=9}    ${font}${time %a %m/%d %H:%M} \
+${font FontAwesome:size=9}    ${font}${exec whoami} \
 ]]
+
+

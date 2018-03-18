@@ -175,4 +175,4 @@ exec --no-startup-id gpg-agent --daemon --enable-ssh-support
 
 # Set up monitors
 exec --no-startup-id feh --bg-scale $WALLPAPER_PATH
-#exec --no-startup-id conky -c $CONKY_PATH
+exec --no-startup-id conky -c $CONKY_PATH
