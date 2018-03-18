@@ -150,7 +150,7 @@ bar {
 		separator             $WHITE
 		background            $DARK_GRAY
 		statusline            $DARK_GRAY
-		focused_workspace     $STEEL_BLUE     $STEEL_BLUE     $WHITE
+		focused_workspace     $STEEL_BLUE     $STEEL_BLUE    $WHITE
 		active_workspace      $DARK_GRAY      $DARK_GRAY     $SLATE_GRAY
 		inactive_workspace    $DARK_GRAY      $DARK_GRAY     $SLATE_GRAY
 		urgent_workspace      $STEEL_BLUE     $STEEL_BLUE    $WHITE
