@@ -1,26 +1,31 @@
 # Set variables
-set $WORKSPACE1 " dev"
-set $WORKSPACE2 " web"
-set $WORKSPACE3 " chat"
-set $WORKSPACE4 " mail"
-set $WORKSPACE5 " audio"
-set $WORKSPACE6 " video"
-set $WORKSPACE7 " vis"
-set $WORKSPACE8 " doc"
-set $WORKSPACE9 " term"
-set $WORKSPACE0 " other"
+set $WORKSPACE1    " dev"
+set $WORKSPACE2    " web"
+set $WORKSPACE3    " chat"
+set $WORKSPACE4    " mail"
+set $WORKSPACE5    " audio"
+set $WORKSPACE6    " video"
+set $WORKSPACE7    " vis"
+set $WORKSPACE8    " doc"
+set $WORKSPACE9    " term"
+set $WORKSPACE0    " other"
 
-set $BLACK     #1D1010
-set $DARKGREY  #1D1F21
-set $LIGHTGREY #454A4F
-set $WHITE     #F0F0F0
-set $YELLOW    #FFFF87
-set $RED       #FF4D4D
+set $BLACK          #000000
+set $DARK_GRAY      #1d1f21
+set $GOLD           #708090
+set $ORANGE_RED     #ff4500
+set $RED            #ff0000
+set $SANDY_BROWN    #f4a460
+set $SLATE_GRAY     #708090
+set $STEEL_BLUE     #4682b4
+set $TOMATO         #ff6347
+set $WHITE          #ffffff
+set $YELLOW         #ffff00
 
-set $DUNST_PATH     $HOME/.i3/dunstrc
+set $STATUS_COMMAND $HOME/.i3/i3status
+set $DUNST_CONFIG   $HOME/.i3/dunstrc
 set $WALLPAPER_PATH $HOME/.wallpaper.png
-set $CONKY_PATH     $HOME/.dotfiles/i3/conkyrc
-set $STATUS_PATH    $HOME/.dotfiles/i3/conkyrc_status
+set $SIDEBAR_CONFIG $HOME/.dotfiles/i3/conkyrc_sidebar
 
 # Font family and size
 font pango:DejaVu Sans Mono for Powerline 9
@@ -136,15 +141,16 @@ bindsym $mod+r mode "resize"
 bar {
 	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
 	position top
-	status_command conky -c $STATUS_PATH
+	status_command $STATUS_COMMAND
+	separator_symbol "  "
 	colors {
-		separator  #666666
-		background #222222
-		statusline #DDDDDD
-		focused_workspace  #0088CC #0088CC #FFFFFF
-		active_workspace   #333333 #333333 #FFFFFF
-		inactive_workspace #333333 #333333 #888888
-		urgent_workspace   #2f343a #900000 #FFFFFF
+		separator             $SLATE_GRAY
+		background            $DARK_GRAY
+		statusline            $DARK_GRAY
+		focused_workspace     $STEEL_BLUE     $STEEL_BLUE    $WHITE
+		active_workspace      $DARK_GRAY      $DARK_GRAY     $WHITE
+		inactive_workspace    $DARK_GRAY      $DARK_GRAY     $WHITE
+		urgent_workspace      $TOMATO         $TOMATO        $WHITE
 	}
 }
 
@@ -162,17 +168,17 @@ gaps inner 3
 smart_borders on
 focus_follows_mouse no
 
-# Class                 Border       Backgr.      Text        Split
-client.focused_inactive $LIGHTGREY   $LIGHTGREY   $WHITE      $WHITE
-client.focused          $LIGHTGREY   $LIGHTGREY   $WHITE      $WHITE
-client.unfocused        $DARKGREY    $DARKGREY    $WHITE      $WHITE
-client.urgent           $RED         $RED         $WHITE      $WHITE
-client.background       $WHITE
+# Class                    Border         Backgr.        Text      Split
+client.focused_inactive    $SLATE_GRAY    $SLATE_GRAY    $WHITE    $WHITE
+client.focused             $SLATE_GRAY    $SLATE_GRAY    $WHITE    $WHITE
+client.unfocused           $DARK_GRAY     $DARK_GRAY     $WHITE    $WHITE
+client.urgent              $ORANGE_RED    $ORANGE_RE     $WHITE    $WHITE
+client.background          $WHITE
 
 # Execute on startup
-exec --no-startup-id dunst -config $DUNST_PATH
+exec --no-startup-id dunst -config $DUNST_CONFIG
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support
 
 # Set up monitors
 exec --no-startup-id feh --bg-scale $WALLPAPER_PATH
-exec --no-startup-id conky -c $CONKY_PATH
+exec --no-startup-id conky -c $SIDEBAR_CONFIG
