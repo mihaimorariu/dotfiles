@@ -17,19 +17,19 @@ conky.config = {
 	use_xft               = true,
 	template1             = [[${exec acpi -b | egrep -o "[0-9]+%" | rev | cut -c 2- | rev}]],
 	template2             = [[${exec ls /sys/class/net | grep 'wl'}]],
-	template3             = [[${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ RJTT \1}]],
+	template3             = [[${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ \1 \2}]],
 	template5             = [[${if_match ${template1} >= 95}${else}${if_match ${template1} >= 50}${else}${if_match ${template1} >= 25}${else}${endif}${endif}${endif}]],
 }
 
 conky.text = [[
 [
-	{"full_text": "Tokyo  ${template3 temperature}°C", "color": "\#ffffff"},
-	{"full_text": " ${downspeedf wlp3s0}KB/s",        "color": "\#ffffff"},
-	{"full_text": "${template5} ${template1}%",        "color": "${if_match ${template1} <= 25}\#ff4500${else}\#ffffff${endif}"},
-	{"full_text": " ${memperc}%",                     "color": "${if_match ${memperc}   >= 90}\#ff4500${else}\#ffffff${endif}"},
-	{"full_text": " ${cpu}%",                         "color": "${if_match ${cpu}       >= 90}\#ff4500${else}\#ffffff${endif}"},
-	{"full_text": " ${time %a %m/%d %H:%M}",          "color": "\#ffffff"},
-	{"full_text": " ${exec hostname}",                "color": "\#ffdead"}
+	{"full_text": "Tokyo: ${template3 RJTT temperature}°C",    "color": "\#ffffff"},
+	{"full_text": " ${downspeedf wlp3s0}KB/s",                "color": "\#ffffff"},
+	{"full_text": "${template5} ${template1}%",                "color": "${if_match ${template1} <= 25}\#ff4500${else}\#ffffff${endif}"},
+	{"full_text": " ${memperc}%",                             "color": "${if_match ${memperc}   >= 90}\#ff4500${else}\#ffffff${endif}"},
+	{"full_text": " ${cpu}%",                                 "color": "${if_match ${cpu}       >= 90}\#ff4500${else}\#ffffff${endif}"},
+	{"full_text": " ${time %a %m/%d %H:%M}",                  "color": "\#ffffff"},
+	{"full_text": " ${exec hostname}",                        "color": "\#ffdead"}
 ],
 ]]
 
