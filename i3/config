@@ -151,8 +151,8 @@ bar {
 		background            $DARK_GRAY
 		statusline            $DARK_GRAY
 		focused_workspace     $STEEL_BLUE     $STEEL_BLUE    $WHITE
-		active_workspace      $DARK_GRAY      $DARK_GRAY     $SLATE_GRAY
-		inactive_workspace    $DARK_GRAY      $DARK_GRAY     $SLATE_GRAY
+		active_workspace      $DARK_GRAY      $DARK_GRAY     $WHITE
+		inactive_workspace    $DARK_GRAY      $DARK_GRAY     $WHITE
 		urgent_workspace      $STEEL_BLUE     $STEEL_BLUE    $WHITE
 	}
 }
@@ -172,8 +172,8 @@ smart_borders on
 focus_follows_mouse no
 
 # Class                    Border         Backgr.        Text      Split
-client.focused_inactive    $SLATE_GRAY    $SLATE_GRAY    $WHITE    $WHITE
-client.focused             $SLATE_GRAY    $SLATE_GRAY    $WHITE    $WHITE
+client.focused_inactive    $DARK_GRAY     $DARK_GRAY     $WHITE    $WHITE
+client.focused             $STEEL_BLUE    $STEEL_BLUE    $WHITE    $WHITE
 client.unfocused           $DARK_GRAY     $DARK_GRAY     $WHITE    $WHITE
 client.urgent              $STEEL_BLUE    $STEEL_BLUE    $WHITE    $WHITE
 client.background          $WHITE
