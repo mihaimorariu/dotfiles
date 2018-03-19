@@ -4,7 +4,7 @@
     follow = none
     font = DejaVu Sans 9
     format = "<b>%a</b>\n%s\n%b"
-    frame_color = "#66BAFF"
+    frame_color = "#ffdead"
     frame_width = 2
     geometry = "0-5+20"
     history_length = 10
@@ -27,16 +27,16 @@
     word_wrap = no
 
 [urgency_low]
-    background = "#66BAFF"
-    foreground = "#282A2E"
+    background = "#ffdead"
+    foreground = "#1d1f21"
     timeout = 10
 
 [urgency_normal]
-    background = "#66BAFF"
-    foreground = "#282A2E"
+    background = "#ffdead"
+    foreground = "#1d1f21"
     timeout = 10
 
 [urgency_critical]
-    background = "#66BAFF"
-    foreground = "#282A2E"
+    background = "#ffdead"
+    foreground = "#1d1f21"
     timeout = 10
