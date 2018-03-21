@@ -32,9 +32,8 @@ def FlagsForFile(filename, **kwargs):
 		'-std=c++14',
 		'-isystem', '/usr/include/boost',
 		'-isystem', '/usr/include/eigen3',
-		'-isystem', '/usr/include/pcl-1.8',
 		'-isystem', '/usr/include/opencv2',
-		'-isystem', '/opt/ensenso/development/c/include',
+		'-isystem', '/usr/include/pcl-1.8',
 		'-isystem', '/opt/ros/lunar/include',
 		'-I', '.',
 	]
