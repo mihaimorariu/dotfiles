@@ -17,7 +17,7 @@ conky.config = {
 	use_xft               = true,
 	template1             = [[${exec acpi -b | egrep -o "[0-9]+%" | rev | cut -c 2- | rev}]],
 	template2             = [[${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ \1 \2}]],
-	template3             = [[${if_match ${template1} >= 95}${else}${if_match ${template1} >= 50}${else}${if_match ${template1} >= 25}${else}${endif}${endif}${endif}]],
+	template3             = [[${if_match ${template1} >= 95}${else}${if_match ${template1} >= 50}${else}${if_match ${template1} >= 5}${else}${endif}${endif}${endif}]],
 }
 
 conky.text = [[
