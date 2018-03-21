@@ -1,0 +1,5 @@
+function mkd() {
+    mkdir -p "$@" && cd "$@"
+}
+
+alias o='xdg-open &>/dev/null'
