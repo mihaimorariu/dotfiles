@@ -90,6 +90,17 @@ bindsym $mod+e layout toggle split
 # Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+# Change keyboard layout
+set $keyboard_layout "keyboard layout  r=ro u=us j=jp"
+bindsym $mod+Shift+k mode $keyboard_layout
+mode $keyboard_layout {
+  bindsym r exec "setxkbmap ro std", mode "default"
+  bindsym u exec "setxkbmap us",     mode "default"
+  bindsym j exec "setxkbmap jp",     mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
 # Switch to workspace
 bindsym $mod+1 workspace $WORKSPACE1
 bindsym $mod+2 workspace $WORKSPACE2
