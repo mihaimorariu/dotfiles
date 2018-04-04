@@ -17,7 +17,7 @@ set cino=g0,Ls,N-s,(s,U1,m1,j1,J1,#1,l1
 set formatoptions+=j
 set mouse=a
 set nowrap
-set colorcolumn=+1
+set colorcolumn=120
 set showcmd
 set hlsearch
 set nrformats=octal,hex,alpha
