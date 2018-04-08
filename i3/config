@@ -12,6 +12,7 @@ set $WORKSPACE0    " other "
 
 
 set $BLACK          #000000
+set $BLUE           #2196f3
 set $DARK_GRAY      #1d1f21
 set $GOLD           #f0e68c
 set $GOLDEN_ROD     #daa520
@@ -20,7 +21,6 @@ set $ORANGE_RED     #ff4500
 set $RED            #ff0000
 set $SANDY_BROWN    #f4a460
 set $SLATE_GRAY     #708090
-set $STEEL_BLUE     #4682b4
 set $TOMATO         #ff6347
 set $WHITE          #ffffff
 set $YELLOW         #ffff00
@@ -161,10 +161,10 @@ bar {
 		separator             $WHITE
 		background            $DARK_GRAY
 		statusline            $DARK_GRAY
-		focused_workspace     $STEEL_BLUE     $STEEL_BLUE    $WHITE
+		focused_workspace     $BLUE           $BLUE          $WHITE
 		active_workspace      $DARK_GRAY      $DARK_GRAY     $WHITE
 		inactive_workspace    $DARK_GRAY      $DARK_GRAY     $WHITE
-		urgent_workspace      $STEEL_BLUE     $STEEL_BLUE    $WHITE
+		urgent_workspace      $BLUE           $BLUE          $WHITE
 	}
 }
 
@@ -184,9 +184,9 @@ focus_follows_mouse no
 
 # Class                    Border         Backgr.        Text      Split
 client.focused_inactive    $DARK_GRAY     $DARK_GRAY     $WHITE    $WHITE
-client.focused             $STEEL_BLUE    $STEEL_BLUE    $WHITE    $WHITE
+client.focused             $BLUE          $BLUE          $WHITE    $WHITE
 client.unfocused           $DARK_GRAY     $DARK_GRAY     $WHITE    $WHITE
-client.urgent              $STEEL_BLUE    $STEEL_BLUE    $WHITE    $WHITE
+client.urgent              $BLUE          $BLUE          $WHITE    $WHITE
 client.background          $WHITE
 
 # Execute on startup
