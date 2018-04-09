@@ -93,11 +93,11 @@ bindsym $mod+Shift+space floating toggle
 set $keyboard_layout "keyboard layout  r=ro u=us j=jp"
 bindsym $mod+Shift+k mode $keyboard_layout
 mode $keyboard_layout {
-  bindsym r exec "setxkbmap ro std", mode "default"
-  bindsym u exec "setxkbmap us",     mode "default"
-  bindsym j exec "setxkbmap jp",     mode "default"
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
+	bindsym r exec "setxkbmap ro std", mode "default"
+	bindsym u exec "setxkbmap us",     mode "default"
+	bindsym j exec "setxkbmap jp",     mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
 # Switch to workspace
