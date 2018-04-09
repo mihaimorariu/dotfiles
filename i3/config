@@ -10,7 +10,6 @@ set $WORKSPACE8    " doc "
 set $WORKSPACE9    " term "
 set $WORKSPACE0    " other "
 
-
 set $BLACK          #000000
 set $BLUE           #2196f3
 set $DARK_GRAY      #1d1f21
