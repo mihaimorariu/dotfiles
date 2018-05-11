@@ -45,6 +45,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Valloric/YouCompleteMe'
 Plug 'godlygeek/tabular'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
 Plug 'junegunn/vim-plug'
 Plug 'vim-scripts/The-NERD-commenter'
 
