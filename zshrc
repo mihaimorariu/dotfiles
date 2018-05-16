@@ -12,6 +12,7 @@ ENABLE_CORRECTION="false"
 
 plugins=(
   git
+  gpg-agent
   zsh-syntax-highlighting
 )
 

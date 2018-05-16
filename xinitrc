@@ -14,5 +14,8 @@ xset b off
 xset fp+ ~/.dotfiles/.fonts/misc
 xset fp rehash
 
+# Start the GPG agent.
+gpg-connect-agent updatestartuptty /bye
+
 # Start the window manager
 exec i3
