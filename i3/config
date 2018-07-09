@@ -60,14 +60,14 @@ bindsym $mod+Shift+p exec --no-startup-id "poweroff"
 # Exit i3
 bindsym $mod+Shift+e exec --no-startup-id "i3-msg exit"
 
-# Screen brightness control
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+# Control screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Control volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 2%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 2%-
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 
 # Change focus
 bindsym $mod+Left focus left
