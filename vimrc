@@ -68,6 +68,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_extensions = ['mixed', 'line']
 
+Plug 'shime/vim-livedown'
+let g:livedown_autorun = 0
+let g:livedown_open = 1
+let g:livedown_port = 1337
+let g:livedown_browser = "chromium"
+
 call plug#end()
 
 filetype plugin on
