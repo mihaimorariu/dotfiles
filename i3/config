@@ -24,7 +24,7 @@ set $TOMATO         #ff6347
 set $WHITE          #ffffff
 set $YELLOW         #ffff00
 
-set $STATUS_COMMAND $HOME/.i3/conky_i3bar/i3status
+set $STATUS_COMMAND i3status-rs $HOME/.i3/i3status_rust/status.toml
 set $DUNST_CONFIG   $HOME/.i3/dunstrc
 set $WALLPAPER_PATH $HOME/.wallpaper.png
 set $SIDEBAR_CONFIG $HOME/.dotfiles/i3/conkyrc_sidebar
