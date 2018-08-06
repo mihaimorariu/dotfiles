@@ -5,17 +5,14 @@ icons = "awesome"
 block = "net"
 device = "wlp3s0"
 ssid = true
+speed_up = false
+speed_down = false
 interval = 5
 
 [[block]]
 block = "music"
 player = "spotify"
 buttons = ["play", "next"]
-
-[[block]]
-block = "nvidia_gpu"
-show_memory = false
-interval = 5
 
 [[block]]
 block = "temperature"
