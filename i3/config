@@ -183,12 +183,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Window appearance
-for_window [class="^.*"] border pixel 0
-
-gaps outer 0
-gaps inner 3
-smart_borders on
-focus_follows_mouse no
+for_window [class="^.*"] border pixel 1
 
 # Class                    Border         Backgr.        Text      Split
 client.focused_inactive    $DARK_GRAY     $DARK_GRAY     $WHITE    $WHITE
