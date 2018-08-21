@@ -1,14 +1,14 @@
 # Set variables
-set $WORKSPACE1    " dev "
-set $WORKSPACE2    " web "
-set $WORKSPACE3    " chat "
-set $WORKSPACE4    " mail "
-set $WORKSPACE5    " audio "
-set $WORKSPACE6    " video "
-set $WORKSPACE7    " vis "
-set $WORKSPACE8    " doc "
-set $WORKSPACE9    " term "
-set $WORKSPACE0    " other "
+set $WORKSPACE1    "dev"
+set $WORKSPACE2    "web"
+set $WORKSPACE3    "chat"
+set $WORKSPACE4    "mail"
+set $WORKSPACE5    "audio"
+set $WORKSPACE6    "video"
+set $WORKSPACE7    "vis"
+set $WORKSPACE8    "doc"
+set $WORKSPACE9    "term"
+set $WORKSPACE0    "other"
 
 set $BLACK          #000000
 set $BLUE           #2196f3
@@ -24,10 +24,9 @@ set $TOMATO         #ff6347
 set $WHITE          #ffffff
 set $YELLOW         #ffff00
 
-set $STATUS_COMMAND i3status-rs $HOME/.i3/i3status_rust/status.toml
+set $POLYBAR_LAUNCH $HOME/.i3/polybar/launch
 set $DUNST_CONFIG   $HOME/.i3/dunstrc
 set $WALLPAPER_PATH $HOME/.wallpaper.png
-set $SIDEBAR_CONFIG $HOME/.dotfiles/i3/conkyrc_sidebar
 
 # Font family and size
 font pango:DejaVu Sans Mono for Powerline 9
@@ -37,6 +36,9 @@ set $mod Mod4
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Disable focus following mouse
+focus_follows_mouse no
 
 # Start a terminal
 bindsym $mod+Return exec termite
@@ -67,7 +69,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 # Control volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 2%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 2%-
-bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+#bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 
 # Change focus
 bindsym $mod+Left focus left
@@ -159,28 +161,15 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Display workspace and status bar
-bar {
-	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
-	position top
-	status_command $STATUS_COMMAND
-	separator_symbol "   "
-	colors {
-		separator             $WHITE
-		background            $DARK_GRAY
-		statusline            $DARK_GRAY
-		focused_workspace     $BLUE           $BLUE          $WHITE
-		active_workspace      $DARK_GRAY      $DARK_GRAY     $WHITE
-		inactive_workspace    $DARK_GRAY      $DARK_GRAY     $WHITE
-		urgent_workspace      $BLUE           $BLUE          $WHITE
-	}
-}
-
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
 # Restart i3
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec "i3-msg restart; $POLYBAR_LAUNCH"
+
+# Reconfigure screen for different environments
+bindsym $mod+Shift+w exec "$HOME/.i3/scripts/randr work"
+bindsym $mod+Shift+h exec "$HOME/.i3/scripts/randr home"
 
 # Window appearance
 for_window [class="^.*"] border pixel 1
@@ -196,6 +185,8 @@ client.background          $WHITE
 exec --no-startup-id dunst -config $DUNST_CONFIG
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support
 
-# Set up monitors
+# Start the polybar
+exec --no-startup-id $POLYBAR_LAUNCH
+
+# Set up wallpaper
 exec --no-startup-id feh --bg-scale $WALLPAPER_PATH
-exec --no-startup-id conky -c $SIDEBAR_CONFIG
