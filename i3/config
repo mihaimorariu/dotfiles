@@ -170,6 +170,7 @@ bindsym $mod+Shift+r exec "i3-msg restart; $POLYBAR_LAUNCH"
 # Reconfigure screen for different environments
 bindsym $mod+Shift+w exec "$HOME/.i3/scripts/randr work"
 bindsym $mod+Shift+h exec "$HOME/.i3/scripts/randr home"
+bindsym $mod+Shift+a exec "$HOME/.i3/scripts/randr auto"
 
 # Window appearance
 for_window [class="^.*"] border pixel 1
