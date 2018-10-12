@@ -183,11 +183,10 @@ client.urgent              $BLUE          $BLUE          $WHITE    $WHITE
 client.background          $WHITE
 
 # Execute on startup
-exec --no-startup-id dunst -config $DUNST_CONFIG
-exec --no-startup-id gpg-agent --daemon --enable-ssh-support
-
-# Start the polybar
-exec --no-startup-id $POLYBAR_LAUNCH
-
-# Set up wallpaper
-exec --no-startup-id feh --bg-scale $WALLPAPER_PATH
+exec --no-startup-id xset s off                              # Disable the screensaver
+exec --no-startup-id xset dpms 600 600 600                   # Turn off the screen after 10 minutes
+exec --no-startup-id xset b off                              # Disable annoying beeps
+exec --no-startup-id dunst -config $DUNST_CONFIG             # Start the launch menu
+exec --no-startup-id gpg-connect-agent updatestartuptty /bye # Start the GPG agent
+exec --no-startup-id $POLYBAR_LAUNCH                         # Start the top bar
+exec --no-startup-id feh --bg-scale $WALLPAPER_PATH          # Set up the wallpaper
