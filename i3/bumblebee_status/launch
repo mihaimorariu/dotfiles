@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+
+bumblebee-status -t gruvbox-powerline-light \
+                 -m spotify \
+                    cmus \
+                    weather \
+                    publicip \
+                    battery \
+                    cpu \
+                    memory \
+                    sensors \
+                    pacman \
+                    amixer \
+                    layout \
+                    datetime \

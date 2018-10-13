@@ -1,14 +1,14 @@
 # Set variables
-set $WORKSPACE1    "dev"
-set $WORKSPACE2    "web"
-set $WORKSPACE3    "chat"
-set $WORKSPACE4    "mail"
-set $WORKSPACE5    "audio"
-set $WORKSPACE6    "video"
-set $WORKSPACE7    "vis"
-set $WORKSPACE8    "doc"
-set $WORKSPACE9    "term"
-set $WORKSPACE0    "other"
+set $WORKSPACE1    " dev "
+set $WORKSPACE2    " web "
+set $WORKSPACE3    " chat "
+set $WORKSPACE4    " mail "
+set $WORKSPACE5    " audio "
+set $WORKSPACE6    " video "
+set $WORKSPACE7    " vis "
+set $WORKSPACE8    " doc "
+set $WORKSPACE9    " term "
+set $WORKSPACE0    " other "
 
 set $BLACK          #000000
 set $BLUE           #2196f3
@@ -24,9 +24,9 @@ set $TOMATO         #ff6347
 set $WHITE          #ffffff
 set $YELLOW         #ffff00
 
-set $POLYBAR_LAUNCH $HOME/.i3/polybar/launch
-set $DUNST_CONFIG   $HOME/.i3/dunstrc
-set $WALLPAPER_PATH $HOME/.wallpaper.png
+set $BUMBLEBEE_STATUS_LAUNCH $HOME/.i3/bumblebee_status/launch
+set $DUNST_CONFIG            $HOME/.i3/dunstrc
+set $WALLPAPER_PATH          $HOME/.wallpaper.png
 
 # Font family and size
 font pango:DejaVu Sans Mono for Powerline 9
@@ -67,9 +67,9 @@ bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Control volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 2%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 2%-
-#bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle
 
 # Change focus
 bindsym $mod+Left focus left
@@ -182,11 +182,26 @@ client.unfocused           $DARK_GRAY     $DARK_GRAY     $WHITE    $WHITE
 client.urgent              $BLUE          $BLUE          $WHITE    $WHITE
 client.background          $WHITE
 
+# Display workspaces and status bar
+bar {
+	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
+	status_command $BUMBLEBEE_STATUS_LAUNCH
+	position top
+	colors {
+		separator             $WHITE
+		background            $DARK_GRAY
+		statusline            $DARK_GRAY
+		focused_workspace     $BLUE           $BLUE          $WHITE
+		active_workspace      $DARK_GRAY      $DARK_GRAY     $WHITE
+		inactive_workspace    $DARK_GRAY      $DARK_GRAY     $WHITE
+		urgent_workspace      $BLUE           $BLUE          $WHITE
+	}
+}
+
 # Execute on startup
 exec --no-startup-id xset s off                              # Disable the screensaver
 exec --no-startup-id xset dpms 600 600 600                   # Turn off the screen after 10 minutes
 exec --no-startup-id xset b off                              # Disable annoying beeps
 exec --no-startup-id dunst -config $DUNST_CONFIG             # Start the launch menu
 exec --no-startup-id gpg-connect-agent updatestartuptty /bye # Start the GPG agent
-exec --no-startup-id $POLYBAR_LAUNCH                         # Start the top bar
 exec --no-startup-id feh --bg-scale $WALLPAPER_PATH          # Set up the wallpaper
