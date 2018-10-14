@@ -187,6 +187,8 @@ bar {
 	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
 	status_command $BUMBLEBEE_STATUS_LAUNCH
 	position top
+	wheel_up_cmd nop
+	wheel_down_cmd nop
 	colors {
 		separator             $WHITE
 		background            $DARK_GRAY
