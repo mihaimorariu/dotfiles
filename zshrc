@@ -19,6 +19,9 @@ plugins=(
 [ ! -d $ZSH_CACHE_DIR ] && mkdir $ZSH_CACHE_DIR
 [   -f $ZSH_LOCAL     ] && source $ZSH_LOCAL
 
+# Communicate with a running GPG agent.
+gpg-connect-agent updatestartuptty /bye > /dev/null
+
 # Source related files.
 source $ZSH/oh-my-zsh.sh
 source $ZSH_SH_DIR/zsh-syntax-highlighting.zsh
