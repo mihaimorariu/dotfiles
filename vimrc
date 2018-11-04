@@ -7,6 +7,7 @@ set cino=g0,Ls,N-s,(s,U1,m1,j1,J1,#1,l1
 set colorcolumn=80
 set copyindent
 set encoding=utf-8
+set expandtab
 set foldmethod=marker
 set formatoptions+=j
 set guioptions=ac
@@ -35,9 +36,9 @@ set wildmenu
 nnoremap <Leader>s vip:sort<Cr>
 vnoremap <Leader>s :sort<Cr>gv
 noremap <Leader>n :NERDTreeToggle<Cr>
-noremap <C-Left> :bprev<CR>
-noremap <C-Right> :bnext<CR>
-noremap <C-d> :bd<CR>
+noremap <S-k> :bprev<CR>
+noremap <S-j> :bnext<CR>
+noremap D :bd<CR>
 
 syntax on
 filetype off
