@@ -100,16 +100,16 @@ bindsym $mod+e layout toggle split
 # Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# Change keyboard layout
-set $keyboard_layout "keyboard layout  r=ro u=us j=jp"
-bindsym $mod+Shift+k mode $keyboard_layout
-mode $keyboard_layout {
-	bindsym r exec "setxkbmap ro std", mode "default"
-	bindsym u exec "setxkbmap us",     mode "default"
-	bindsym j exec "setxkbmap jp",     mode "default"
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
+# Change keyboard layout (deprecated and replaced with fcitx)
+#set $keyboard_layout "keyboard layout  r=ro u=us j=jp"
+#bindsym $mod+Shift+k mode $keyboard_layout
+#mode $keyboard_layout {
+#	bindsym r exec "setxkbmap ro std", mode "default"
+#	bindsym u exec "setxkbmap us",     mode "default"
+#	bindsym j exec "setxkbmap jp",     mode "default"
+#	bindsym Return mode "default"
+#	bindsym Escape mode "default"
+#}
 
 # Switch to workspace
 bindsym $mod+1 workspace $WORKSPACE1
@@ -201,9 +201,7 @@ bar {
 }
 
 # Execute on startup
-exec --no-startup-id xset s off                              # Disable the screensaver
-exec --no-startup-id xset dpms 600 600 600                   # Turn off the screen after 10 minutes
-exec --no-startup-id xset b off                              # Disable annoying beeps
+exec --no-startup-id fcitx                                   # Start the input mode
 exec --no-startup-id dunst -config $DUNST_CONFIG             # Start the launch menu
 exec --no-startup-id feh --bg-scale $WALLPAPER_PATH          # Set up the wallpaper
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support # Start the GPG agent
