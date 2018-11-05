@@ -11,5 +11,4 @@ bumblebee-status -t gruvbox-powerline-light \
                     sensors \
                     pacman \
                     amixer \
-                    layout \
                     datetime \
