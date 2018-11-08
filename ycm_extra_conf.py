@@ -35,7 +35,7 @@ def FlagsForFile(filename, **kwargs):
 		'-isystem', '/usr/include/opencv',
 		'-isystem', '/usr/include/pcl-1.8',
 		'-isystem', '/usr/include/vtk',
-		'-isystem', '/opt/ros/lunar/include',
+		'-isystem', '/opt/ros/melodic/include',
 		'-I', '.',
 	]
 
