@@ -202,6 +202,7 @@ bar {
 
 # Execute on startup
 exec --no-startup-id fcitx                                   # Start the input mode
+exec --no-startup-id nm-applet                               # Start the network manager applet
 exec --no-startup-id dunst -config $DUNST_CONFIG             # Start the launch menu
 exec --no-startup-id feh --bg-scale $WALLPAPER_PATH          # Set up the wallpaper
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support # Start the GPG agent
