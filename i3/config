@@ -184,6 +184,7 @@ client.background          $WHITE
 
 # Display workspaces and status bar
 bar {
+	bindsym button1 nop
 	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
 	status_command $BUMBLEBEE_STATUS_LAUNCH
 	position top
