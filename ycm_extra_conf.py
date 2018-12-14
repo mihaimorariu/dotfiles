@@ -32,6 +32,7 @@ def FlagsForFile(filename, **kwargs):
 		'-std=c++11',
 		'-isystem', '/usr/include/boost',
 		'-isystem', '/usr/include/eigen3',
+		'-isystem', '/usr/include/opencv4',
 		'-isystem', '/usr/include/opencv',
 		'-isystem', '/usr/include/pcl-1.8',
 		'-isystem', '/usr/include/vtk',
