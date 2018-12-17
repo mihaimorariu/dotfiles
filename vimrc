@@ -80,4 +80,3 @@ call plug#end()
 
 filetype plugin on
 filetype indent on
-autocmd FileType cmake setlocal noexpandtab
