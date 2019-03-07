@@ -38,6 +38,7 @@ def FlagsForFile(filename, **kwargs):
         '/usr/include/opencv',
         '/usr/include/pcl-1.8',
         '/usr/include/vtk',
+        '/usr/include/vtk-6.3',
         '/opt/ros/melodic/include',
         '/opt/ros/melodic/include/xmlrpcpp/',
     ]
