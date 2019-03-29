@@ -45,13 +45,14 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'Valloric/YouCompleteMe'
+Plug 'christoomey/vim-titlecase'
 Plug 'godlygeek/tabular'
-Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
+Plug 'google/vim-maktaba'
 Plug 'junegunn/vim-plug'
 Plug 'vim-scripts/The-NERD-commenter'
+Plug 'Valloric/YouCompleteMe'
 
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
