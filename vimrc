@@ -81,3 +81,6 @@ call plug#end()
 
 filetype plugin on
 filetype indent on
+
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
+autocmd Filetype cpp setlocal shiftwidth=2 tabstop=2 expandtab
