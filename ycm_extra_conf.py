@@ -34,9 +34,11 @@ def FlagsForFile(filename, **kwargs):
     include_dirs = [
         '/usr/include/boost',
         '/usr/include/eigen3',
-        '/usr/include/opencv4',
         '/usr/include/opencv',
+        '/usr/include/opencv4',
+        '/usr/include/pcl-1.7',
         '/usr/include/pcl-1.8',
+        '/usr/include/pcl-1.9',
         '/usr/include/vtk',
         '/usr/include/vtk-6.3',
         '/opt/ros/melodic/include',
