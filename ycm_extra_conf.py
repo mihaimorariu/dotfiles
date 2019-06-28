@@ -26,7 +26,7 @@ def FlagsForFile(filename, **kwargs):
         '-Wextra',
         '-Wpedantic',
         '-fPIC',
-        '-std=c++11',
+        '-std=c++17',
         '-I', '.',
     ]
 

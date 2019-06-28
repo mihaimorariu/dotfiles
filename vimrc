@@ -51,6 +51,7 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'google/vim-maktaba'
 Plug 'junegunn/vim-plug'
+Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/The-NERD-commenter'
 Plug 'Valloric/YouCompleteMe'
 
