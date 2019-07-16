@@ -51,7 +51,7 @@ bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi"
 bindsym $mod+Shift+d exec --no-startup-id "rofi -combi-modi window,run -show combi"
 
 # Lock screen
-bindsym $mod+Shift+l exec --no-startup-id "i3lock -c 000000 -u"
+bindsym $mod+Shift+l exec --no-startup-id "i3lock -f"
 
 # Enter sleep mode
 bindsym $mod+Shift+s exec --no-startup-id "systemctl suspend"
@@ -104,11 +104,11 @@ bindsym $mod+Shift+space floating toggle
 #set $keyboard_layout "keyboard layout  r=ro u=us j=jp"
 #bindsym $mod+Shift+k mode $keyboard_layout
 #mode $keyboard_layout {
-#	bindsym r exec "setxkbmap ro std", mode "default"
-#	bindsym u exec "setxkbmap us",     mode "default"
-#	bindsym j exec "setxkbmap jp",     mode "default"
-#	bindsym Return mode "default"
-#	bindsym Escape mode "default"
+#    bindsym r exec "setxkbmap ro std", mode "default"
+#    bindsym u exec "setxkbmap us",     mode "default"
+#    bindsym j exec "setxkbmap jp",     mode "default"
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
 #}
 
 # Switch to workspace
@@ -142,21 +142,21 @@ bindsym $mod+Control+Right move workspace to output right
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
-	# These bindings trigger as soon as you enter the resize mode
-	bindsym j resize shrink width 5 px or 5 ppt
-	bindsym k resize grow height 5 px or 5 ppt
-	bindsym l resize shrink height 5 px or 5 ppt
-	bindsym semicolon resize grow width 5 px or 5 ppt
+    # These bindings trigger as soon as you enter the resize mode
+    bindsym j resize shrink width 5 px or 5 ppt
+    bindsym k resize grow height 5 px or 5 ppt
+    bindsym l resize shrink height 5 px or 5 ppt
+    bindsym semicolon resize grow width 5 px or 5 ppt
 
-	# Same bindings, but for the arrow keys
-	bindsym Left resize shrink width 5 px or 5 ppt
-	bindsym Down resize grow height 5 px or 5 ppt
-	bindsym Up resize shrink height 5 px or 5 ppt
-	bindsym Right resize grow width 5 px or 5 ppt
+    # Same bindings, but for the arrow keys
+    bindsym Left resize shrink width 5 px or 5 ppt
+    bindsym Down resize grow height 5 px or 5 ppt
+    bindsym Up resize shrink height 5 px or 5 ppt
+    bindsym Right resize grow width 5 px or 5 ppt
 
-	# Back to normal: Enter or Escape
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
+    # Back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -184,25 +184,26 @@ client.background          $WHITE
 
 # Display workspaces and status bar
 bar {
-	font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
-	status_command $BUMBLEBEE_STATUS_LAUNCH
-	position top
-	wheel_up_cmd nop
-	wheel_down_cmd nop
-	colors {
-		separator             $WHITE
-		background            $DARK_GRAY
-		statusline            $DARK_GRAY
-		focused_workspace     $BLUE           $BLUE          $WHITE
-		active_workspace      $DARK_GRAY      $DARK_GRAY     $WHITE
-		inactive_workspace    $DARK_GRAY      $DARK_GRAY     $WHITE
-		urgent_workspace      $BLUE           $BLUE          $WHITE
-	}
+    font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
+    status_command $BUMBLEBEE_STATUS_LAUNCH
+    position top
+    wheel_up_cmd nop
+    wheel_down_cmd nop
+    colors {
+        separator             $WHITE
+        background            $DARK_GRAY
+        statusline            $DARK_GRAY
+        focused_workspace     $BLUE           $BLUE          $WHITE
+        active_workspace      $DARK_GRAY      $DARK_GRAY     $WHITE
+        inactive_workspace    $DARK_GRAY      $DARK_GRAY     $WHITE
+        urgent_workspace      $BLUE           $BLUE          $WHITE
+    }
 }
 
 # Execute on startup
-exec --no-startup-id fcitx                                   # Start the input mode
 exec --no-startup-id nm-applet                               # Start the network manager applet
+exec --no-startup-id fcitx                                   # Start the input mode
+exec --no-startup-id blueman-applet                          # Start the bluetooth applet
 exec --no-startup-id dunst -config $DUNST_CONFIG             # Start the launch menu
 exec --no-startup-id feh --bg-scale $WALLPAPER_PATH          # Set up the wallpaper
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support # Start the GPG agent
