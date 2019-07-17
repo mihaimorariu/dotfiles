@@ -36,8 +36,8 @@ set wildmenu
 nnoremap <Leader>s vip:sort<Cr>
 vnoremap <Leader>s :sort<Cr>gv
 noremap <Leader>n :NERDTreeToggle<Cr>
-noremap <S-k> :bprev<CR>
-noremap <S-j> :bnext<CR>
+noremap <S-j> :bprev<CR>
+noremap <S-k> :bnext<CR>
 noremap D :bd<CR>
 
 syntax on
