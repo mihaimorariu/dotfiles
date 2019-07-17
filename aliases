@@ -3,3 +3,4 @@ function mkd() {
 }
 
 alias o='xdg-open &>/dev/null'
+alias rosgdb='rosrun --prefix "gdb --args"'
