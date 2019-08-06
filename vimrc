@@ -10,12 +10,13 @@ set encoding=utf-8
 set expandtab
 set foldmethod=marker
 set formatoptions+=j
+set formatprg=fmt\ -w80\ -g80
 set guioptions=ac
 set history=200
 set hlsearch
 set laststatus=2
 set list
-set listchars=tab:›—,trail:␣,extends:▶,precedes:◀
+set listchars=tab:▶‒,trail:·,extends:▶,precedes:◀
 set mouse=a
 set nocompatible
 set nojoinspaces
@@ -60,7 +61,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='molokai'
+let g:airline_theme = 'molokai'
 
 Plug 'vim-scripts/The-NERD-tree'
 let NERDTreeQuitOnOpen = 1
