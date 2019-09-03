@@ -27,7 +27,7 @@ set shiftwidth=4
 set showcmd
 set softtabstop=4
 set tabstop=4
-set termguicolors
+"set termguicolors
 set timeoutlen=300
 set ttimeoutlen=50
 set updatetime=500
