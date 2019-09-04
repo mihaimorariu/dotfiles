@@ -61,7 +61,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'base16'
 
 Plug 'vim-scripts/The-NERD-tree'
 let NERDTreeQuitOnOpen = 1
