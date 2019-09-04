@@ -1,6 +1,3 @@
-function mkd() {
-    mkdir -p "$@" && cd "$@"
-}
-
+alias mkd='mkd() { mkdir -p "$@" && cd "$@" }; mkd'
 alias o='xdg-open &>/dev/null'
 alias rosgdb='rosrun --prefix "gdb --args"'
