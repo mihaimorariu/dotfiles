@@ -34,24 +34,19 @@ set updatetime=500
 set viminfo='100,s10,h,%
 set wildmenu
 
-nnoremap <Leader>s vip:sort<Cr>
-vnoremap <Leader>s :sort<Cr>gv
-noremap <Leader>n :NERDTreeToggle<Cr>
-noremap <S-j> :bprev<CR>
-noremap <S-k> :bnext<CR>
-noremap D :bd<CR>
-
 syntax on
 filetype off
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-titlecase'
+Plug 'epheien/termdbg'
 Plug 'godlygeek/tabular'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'google/vim-maktaba'
 Plug 'junegunn/vim-plug'
+Plug 'majutsushi/tagbar'
 Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/The-NERD-commenter'
 Plug 'Valloric/YouCompleteMe'
@@ -65,9 +60,6 @@ let g:airline_theme = 'base16'
 
 Plug 'vim-scripts/The-NERD-tree'
 let NERDTreeQuitOnOpen = 1
-
-Plug 'majutsushi/tagbar'
-nmap <Leader>t :TagbarToggle<CR>
 
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -84,5 +76,15 @@ call plug#end()
 filetype plugin on
 filetype indent on
 
+noremap <Leader>s vip:sort<Cr>
+noremap <Leader>s :sort<Cr>gv
+noremap <S-j> :bprev<CR>
+noremap <S-k> :bnext<CR>
+noremap D :bd<CR>
+noremap <Leader>t :TagbarToggle<CR>
+noremap <Leader>n :NERDTreeToggle<Cr>
+
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
 autocmd Filetype cpp setlocal shiftwidth=2 tabstop=2 expandtab
+
+packadd termdebug
