@@ -84,6 +84,13 @@ noremap D :bd<CR>
 noremap <Leader>t :TagbarToggle<CR>
 noremap <Leader>n :NERDTreeToggle<Cr>
 
+noremap <F2> :TNext<CR>
+noremap <F3> :TStep<CR>
+noremap <F5> :TContinue<CR>
+noremap <F6> :TFinish<CR>
+noremap <F10> :TToggleBreak<CR>
+noremap <F12> :TLocateCursor<CR>
+
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
 autocmd Filetype cpp setlocal shiftwidth=2 tabstop=2 expandtab
 
