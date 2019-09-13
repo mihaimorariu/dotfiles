@@ -11,6 +11,7 @@ DISABLE_AUTO_UPDATE="true"
 ENABLE_CORRECTION="false"
 
 plugins=(
+  fzf
   git
   gpg-agent
   zsh-syntax-highlighting
