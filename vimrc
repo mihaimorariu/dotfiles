@@ -25,8 +25,8 @@ set nrformats=octal,hex,alpha
 set number
 set shiftwidth=4
 set showcmd
-set softtabstop=4
-set tabstop=4
+set softtabstop=2
+set tabstop=2
 "set termguicolors
 set timeoutlen=300
 set ttimeoutlen=50
@@ -92,6 +92,5 @@ noremap <F10> :TToggleBreak<CR>
 noremap <F12> :TLocateCursor<CR>
 
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
-autocmd Filetype cpp setlocal shiftwidth=2 tabstop=2 expandtab
 
 packadd termdebug
