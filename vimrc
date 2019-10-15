@@ -78,8 +78,8 @@ filetype indent on
 
 noremap <Leader>s vip:sort<Cr>
 noremap <Leader>s :sort<Cr>gv
-noremap <S-j> :bprev<CR>
-noremap <S-k> :bnext<CR>
+noremap <S-l> :bprev<CR>
+noremap <S-h> :bnext<CR>
 noremap D :bd<CR>
 noremap <Leader>t :TagbarToggle<CR>
 noremap <Leader>n :NERDTreeToggle<Cr>
