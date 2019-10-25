@@ -27,6 +27,7 @@ set $YELLOW         #ffff00
 set $BUMBLEBEE_STATUS_LAUNCH $HOME/.i3/bumblebee_status/launch
 set $DUNST_CONFIG            $HOME/.i3/dunstrc
 set $WALLPAPER_PATH          $HOME/.wallpaper.png
+set $SCREEN_LOCK_PATH        $HOME/.dotfiles/bin/screenlock
 
 # Font family and size
 font pango:DejaVu Sans Mono for Powerline 9
@@ -51,7 +52,7 @@ bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi"
 bindsym $mod+Shift+d exec --no-startup-id "rofi -combi-modi window,run -show combi"
 
 # Lock screen
-bindsym $mod+Shift+o exec --no-startup-id "i3lock -f"
+bindsym $mod+Shift+o exec --no-startup-id "$SCREEN_LOCK_PATH"
 
 # Enter sleep mode
 bindsym $mod+Shift+s exec --no-startup-id "systemctl suspend"
