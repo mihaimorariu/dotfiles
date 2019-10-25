@@ -202,4 +202,5 @@ exec --no-startup-id blueman-applet                          # Start the bluetoo
 exec --no-startup-id dunst -config $DUNST_CONFIG             # Start the launch menu
 exec --no-startup-id feh --bg-scale $WALLPAPER_PATH          # Set up the wallpaper
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support # Start the GPG agent
+exec --no-startup-id redshift                                # Start the Redshift agent
 
