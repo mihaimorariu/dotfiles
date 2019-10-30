@@ -2,7 +2,7 @@
 
 IMAGE_PATH="/tmp/screenlock.png"
 
-scrot $IMAGE_PATH
+rm -rf $IMAGE_PATH && scrot $IMAGE_PATH
 mogrify -scale 10% -scale 1000% $IMAGE_PATH
 i3lock -i $IMAGE_PATH
 sleep 60; pgrep i3lock && xset dpms force off
