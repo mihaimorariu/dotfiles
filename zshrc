@@ -27,3 +27,6 @@ gpg-connect-agent updatestartuptty /bye > /dev/null
 source $ZSH/oh-my-zsh.sh
 source $ZSH_SH_DIR/zsh-syntax-highlighting.zsh
 source $ZSH_ALIASES
+
+# Disable annoying vim freeze behavior.
+stty -ixon
