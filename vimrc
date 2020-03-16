@@ -41,7 +41,6 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-titlecase'
-Plug 'epheien/termdbg'
 Plug 'godlygeek/tabular'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
@@ -71,6 +70,9 @@ let g:livedown_autorun = 0
 let g:livedown_open = 1
 let g:livedown_port = 1337
 let g:livedown_browser = "chromium-browser"
+
+Plug 'puremourning/vimspector'
+let g:vimspector_enable_mappings = 'HUMAN'
 
 call plug#end()
 
