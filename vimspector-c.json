@@ -1,0 +1,28 @@
+{
+  "configurations": {
+    "Launch": {
+      "adapter": "vscode-cpptools",
+      "configuration": {
+        "name": "Launch",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "<path to executable>",
+        "args": [],
+        "cwd": "<path to working directory>",
+        "environment": [],
+        "externalConsole": true,
+        "MIMode": "lldb"
+      }
+    },
+    "Attach": {
+      "adapter": "vscode-cpptools",
+      "configuration": {
+        "name": "Attach",
+        "type": "cppdbg",
+        "request": "attach",
+        "program": "<path to executable>",
+        "MIMode": "lldb"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "configurations": {
+    "<name>: Launch": {
+      "adapter": "debugpy",
+      "configuration": {
+        "name": "Launch",
+        "type": "python",
+        "request": "launch",
+        "cwd": "<path to working directory>",
+        "python": "/usr/bin/python",
+        "stopOnEntry": true,
+        "console": "externalTerminal",
+        "debugOptions": [],
+        "program": "<path to executable>"
+      }
+    }
+  }
+}
