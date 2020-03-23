@@ -20,8 +20,10 @@ def find_include_dirs(base_dir):
 
 # Define flags for the current file.
 def FlagsForFile(filename, **kwargs):
+    # Default flags.
     flags = [
-        '-x', 'c++',
+        '-x',
+        'c++',
         '-Wall',
         '-Wextra',
         '-Wpedantic',
@@ -29,6 +31,10 @@ def FlagsForFile(filename, **kwargs):
         '-std=c++17',
         '-I', '.',
     ]
+
+    # CUDA-related flags.
+    if filename.endswith('.cu'):
+        flags = ['-x', 'cuda']
 
     # Define the system include directories.
     include_dirs = [
