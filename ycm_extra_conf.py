@@ -41,6 +41,7 @@ def FlagsForFile(filename, **kwargs):
         '/usr/include/pcl-1.9',
         '/usr/include/vtk',
         '/usr/include/vtk-6.3',
+        '/opt/cuda/include',
         '/opt/ros/melodic/include',
         '/opt/ros/melodic/include/xmlrpcpp/',
     ]
