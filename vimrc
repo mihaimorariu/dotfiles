@@ -73,6 +73,9 @@ let g:livedown_browser = "chromium-browser"
 
 Plug 'puremourning/vimspector'
 let g:vimspector_enable_mappings = 'HUMAN'
+sign define vimspectorBP text=🔴 texthl=Normal
+sign define vimspectorBPDisabled text=🔵 texthl=Normal
+sign define vimspectorPC text=🔶 texthl=SpellBad
 
 call plug#end()
 
@@ -83,7 +86,7 @@ noremap <Leader>s vip:sort<Cr>
 noremap <Leader>s :sort<Cr>gv
 noremap <S-h> :bprev<CR>
 noremap <S-l> :bnext<CR>
-noremap D :bd<CR>
+noremap D :bp<bar>sp<bar>bn<bar>bd<CR>
 noremap <Leader>t :TagbarToggle<CR>
 noremap <Leader>n :NERDTreeToggle<Cr>
 
