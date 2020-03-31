@@ -1,12 +1,12 @@
 # Set variables.
-ZSH=/usr/share/oh-my-zsh/
+ZSH=/usr/share/oh-my-zsh
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 ZSH_SH_DIR=/usr/share/zsh/plugins/zsh-syntax-highlighting
 ZSH_LOCAL=$HOME/.zshrc.local
 ZSH_ALIASES=$HOME/.aliases
 
 # Configure oh-my-zsh.
-ZSH_THEME="bira"
+ZSH_THEME="gianu"
 DISABLE_AUTO_UPDATE="true"
 ENABLE_CORRECTION="false"
 
