@@ -98,5 +98,4 @@ noremap <F10> :TToggleBreak<CR>
 noremap <F12> :TLocateCursor<CR>
 
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
-
-packadd termdebug
+autocmd FileType cuda set ft=c
