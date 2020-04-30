@@ -1,3 +1,7 @@
+"------------------------------------------------------------------------------
+" Global configuration
+"------------------------------------------------------------------------------
+
 colorscheme badwolf
 
 set autoindent
@@ -19,7 +23,6 @@ set laststatus=2
 set list
 set listchars=tab:▶‒,trail:·,extends:▶,precedes:◀
 set mouse=a
-set nocompatible
 set nojoinspaces
 set nowrap
 set nrformats=octal,hex,alpha
@@ -35,10 +38,11 @@ set updatetime=500
 set viminfo='100,s10,h,%
 set wildmenu
 
-syntax on
-filetype off
+"------------------------------------------------------------------------------
+" Installed plugins
+"------------------------------------------------------------------------------
 
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 Plug 'christoomey/vim-titlecase'
 Plug 'godlygeek/tabular'
@@ -50,37 +54,53 @@ Plug 'majutsushi/tagbar'
 Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/The-NERD-commenter'
 Plug 'Valloric/YouCompleteMe'
-
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/The-NERD-tree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'shime/vim-livedown'
+Plug 'puremourning/vimspector'
+
+call plug#end()
+
+"------------------------------------------------------------------------------
+" Plugin configuration
+"------------------------------------------------------------------------------
+
+" vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-Plug 'vim-airline/vim-airline-themes'
+" vim-airline
 let g:airline_theme = 'molokai'
 
-Plug 'vim-scripts/The-NERD-tree'
+" NERDTree
 let NERDTreeQuitOnOpen = 1
 
-Plug 'ctrlpvim/ctrlp.vim'
+" ctrlp
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_extensions = ['mixed', 'line']
 
-Plug 'shime/vim-livedown'
+" livedown
 let g:livedown_autorun = 0
 let g:livedown_open = 1
 let g:livedown_port = 1337
 let g:livedown_browser = "chromium-browser"
 
-Plug 'puremourning/vimspector'
+" vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
 sign define vimspectorBP text=🔴 texthl=Normal
 sign define vimspectorBPDisabled text=🔵 texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
-call plug#end()
-
+syntax on
+filetype off
 filetype plugin on
 filetype indent on
+
+"------------------------------------------------------------------------------
+" Keybindings
+"------------------------------------------------------------------------------
 
 noremap <Leader>s vip:sort<Cr>
 noremap <Leader>s :sort<Cr>gv
@@ -97,8 +117,16 @@ noremap <F6> :TFinish<CR>
 noremap <F10> :TToggleBreak<CR>
 noremap <F12> :TLocateCursor<CR>
 
+"------------------------------------------------------------------------------
+" File type configuration
+"------------------------------------------------------------------------------
+
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
 autocmd FileType cuda set ft=c
+
+"------------------------------------------------------------------------------
+" Code format
+"------------------------------------------------------------------------------
 
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
