@@ -33,6 +33,8 @@ def main():
                 ('nvim/autoload', '.config/nvim/autoload'),
                 ('nvim/colors', '.config/nvim/colors'),
                 ('xinitrc', '.xinitrc'), ('Xresources', '.Xresources'),
+                ('i3/bumblebee_status/bumblebee-status.conf',
+                 '.config/bumblebee-status.conf'),
                 ('zshrc', '.zshrc')]
 
     for src, dst in mappings:
