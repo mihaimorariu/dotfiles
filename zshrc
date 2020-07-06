@@ -14,7 +14,6 @@ plugins=(
   fzf
   git
   gpg-agent
-  zsh-syntax-highlighting
 )
 
 [ ! -d $ZSH_CACHE_DIR ] && mkdir $ZSH_CACHE_DIR
