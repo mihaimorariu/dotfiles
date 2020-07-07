@@ -1,3 +1,4 @@
-alias mkd='mkd() { mkdir -p "$@" && cd "$@" }; mkd'
+mkd() { mkdir -p "$@"; cd "$@" }
+
 alias o='xdg-open &>/dev/null'
 alias rosgdb='rosrun --prefix "gdb --args"'
