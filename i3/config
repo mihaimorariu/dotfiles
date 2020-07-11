@@ -163,7 +163,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+c reload
 
 # Restart i3
-bindsym $mod+Shift+r exec "i3-msg restart; $POLYBAR_LAUNCH"
+bindsym $mod+Shift+r exec "i3-msg restart"
 
 # Reconfigure screen for different environments
 bindsym $mod+Shift+w exec "$HOME/.i3/scripts/randr work"
