@@ -3,6 +3,8 @@
 [user]
     name = Mihai Morariu
     email = mihaimorariu@gmail.com
+[pull]
+    rebase = true
 [alias]
     co = checkout
     br = branch
