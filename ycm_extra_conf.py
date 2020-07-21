@@ -45,11 +45,11 @@ def FlagsForFile(filename, **kwargs):
         '/usr/include/pcl-1.7',
         '/usr/include/pcl-1.8',
         '/usr/include/pcl-1.9',
+        '/usr/include/torch',
         '/usr/include/vtk',
         '/usr/include/vtk-6.3',
+        '/usr/include',
         '/opt/cuda/include',
-        '/opt/ros/melodic/include',
-        '/opt/ros/melodic/include/xmlrpcpp/',
     ]
 
     # Check if the directories exist and include them.
