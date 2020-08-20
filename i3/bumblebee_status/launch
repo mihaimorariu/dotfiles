@@ -6,6 +6,6 @@ bumblebee-status -t gruvbox-powerline-light \
                     battery \
                     cpu \
                     memory \
-                    sensors \
+                    sensors2 \
                     amixer \
                     datetime \
