@@ -2,3 +2,4 @@ mkd() { mkdir -p "$@"; cd "$@" }
 
 alias o='xdg-open &>/dev/null'
 alias rosgdb='rosrun --prefix "gdb --args"'
+alias crn='coolrename'

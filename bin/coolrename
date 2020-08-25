@@ -1,0 +1,11 @@
+#!/bin/sh
+
+filename=$1
+
+if [ -z "$filename" ]; then
+    echo "No file provided, aborting."
+    exit -1
+fi
+
+new_filename=$(echo $filename | sed -e 's/\(.*\)/\L\1/' | sed -e 's/_/-/g')
+mv $filename $new_filename

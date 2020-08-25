@@ -19,6 +19,9 @@ plugins=(
 [ ! -d $ZSH_CACHE_DIR ] && mkdir $ZSH_CACHE_DIR
 [ -f $ZSH_LOCAL ] && source $ZSH_LOCAL
 
+# Export dotfiles/bin.
+export PATH=$PATH:$HOME/.dotfiles/bin
+
 # Communicate with a running GPG agent.
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
