@@ -1,9 +1,0 @@
-configuration {
-  color-enabled:   true;
-  font:            "DejaVu Sans Mono for Powerline 9";
-  color-normal:    #bbbbbb,#525d76,#f5f5f5,#2196f3,#ffffff;
-  color-urgent:    #bbbbbb,#dc322f,#f5f5f5,#2196f3,#dc322f;
-  color-active:    #bbbbbb,#c2cad0,#f5f5f5,#2196f3,#c2cad0l
-  color-window:    #bbbbbb,#f5f5f5;
-  separator-style: solid;
-}
