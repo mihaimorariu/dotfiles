@@ -1,5 +1,5 @@
 [core]
-    editor = nvim
+    editor = vim
 [user]
     name = Mihai Morariu
     email = mihaimorariu@gmail.com
@@ -18,3 +18,5 @@
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+[init]
+    defaultBranch = main
