@@ -42,7 +42,7 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # Start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # Kill focused window
 bindsym $mod+Shift+q kill
