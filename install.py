@@ -28,7 +28,7 @@ def main():
     os.makedirs(backup_dir)
 
     mappings = [('gitconfig', '.gitconfig'), ('i3', '.i3'),
-                ('termite', '.config/termite'), ('tmux.conf', '.tmux.conf'),
+                ('alacritty', '.config/alacritty'), ('tmux.conf', '.tmux.conf'),
                 ('nvim/init.vim', '.config/nvim/init.vim'),
                 ('nvim/autoload', '.config/nvim/autoload'),
                 ('nvim/colors', '.config/nvim/colors'),
