@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-bumblebee-status -t gruvbox-powerline-light \
+bumblebee-status -t iceberg-rainbow \
                  -m weather \
                     publicip \
                     battery \
