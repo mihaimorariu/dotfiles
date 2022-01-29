@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-bumblebee-status -t iceberg-rainbow \
+bumblebee-status -t dracula-powerline \
                  -m weather \
                     publicip \
                     battery \
