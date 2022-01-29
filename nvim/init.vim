@@ -85,7 +85,10 @@ let g:ctrlp_extensions = ['mixed', 'line']
 let g:livedown_autorun = 0
 let g:livedown_open = 1
 let g:livedown_port = 1337
-let g:livedown_browser = "chromium-browser"
+let g:livedown_browser = "vivaldi"
+
+" YouCompleteMe
+let g:ycm_python_binary_path = "python"
 
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
