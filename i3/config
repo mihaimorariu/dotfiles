@@ -24,7 +24,7 @@ set $TOMATO         #ff6347
 set $WHITE          #ffffff
 set $YELLOW         #ffff00
 
-set $BUMBLEBEE_STATUS_LAUNCH $HOME/.i3/bumblebee_status/launch
+set $BUMBLEBEE_STATUS_PATH   $HOME/.local/bin/bumblebee-status
 set $DUNST_CONFIG            $HOME/.i3/dunstrc
 set $WALLPAPER_PATH          $HOME/.wallpaper.png
 set $SCREEN_LOCK_PATH        $HOME/.dotfiles/bin/screenlock
@@ -183,7 +183,7 @@ client.background          $WHITE
 # Display workspaces and status bar
 bar {
     font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
-    status_command $BUMBLEBEE_STATUS_LAUNCH
+    status_command $BUMBLEBEE_STATUS_PATH
     position top
     wheel_up_cmd nop
     wheel_down_cmd nop
