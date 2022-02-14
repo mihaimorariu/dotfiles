@@ -2,7 +2,6 @@
 
 bumblebee-status -t dracula-powerline \
                  -m weather \
-                    publicip \
                     battery \
                     cpu \
                     memory \
