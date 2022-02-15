@@ -1,145 +1,168 @@
 "------------------------------------------------------------------------------
-" Global configuration
-"------------------------------------------------------------------------------
-
-colorscheme badwolf
-
-set autoindent
-set backspace=indent,eol,start
-set cindent
-set cinkeys=0{,0},0),o,O,!^F
-set cino=g0,Ls,N-s,(s,U1,m1,j1,J1,#1,l1
-set colorcolumn=80
-set copyindent
-set encoding=utf-8
-set expandtab
-set foldmethod=marker
-set formatoptions+=j
-set formatprg=fmt\ -w80\ -g80
-set guioptions=ac
-set history=200
-set hlsearch
-set laststatus=2
-set list
-set listchars=tab:▶‒,trail:·,extends:▶,precedes:◀
-set mouse=a
-set nojoinspaces
-set nowrap
-set nrformats=octal,hex,alpha
-set number
-set shiftwidth=4
-set showcmd
-set softtabstop=2
-set tabstop=2
-set termguicolors
-set timeoutlen=300
-set ttimeoutlen=50
-set updatetime=500
-set viminfo='100,s10,h,%
-set wildmenu
-
-"------------------------------------------------------------------------------
-" Installed plugins
+" Plugins
 "------------------------------------------------------------------------------
 
 call plug#begin()
 
-Plug 'christoomey/vim-titlecase'
-Plug 'godlygeek/tabular'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
-Plug 'google/vim-maktaba'
-Plug 'junegunn/vim-plug'
-Plug 'majutsushi/tagbar'
-Plug 'rhysd/vim-clang-format'
-Plug 'vim-scripts/The-NERD-commenter'
-Plug 'Valloric/YouCompleteMe'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/The-NERD-tree'
+Plug 'akinsho/bufferline.nvim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'godlygeek/tabular'
+Plug 'itchyny/lightline.vim'
+Plug 'jacoborus/tender.vim'
+Plug 'liuchengxu/vista.vim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'shime/vim-livedown'
-Plug 'puremourning/vimspector'
+
+"Plug 'google/vim-codefmt'
+"Plug 'google/vim-glaive'
+"Plug 'google/vim-maktaba'
+"Plug 'majutsushi/tagbar'
+"Plug 'rhysd/vim-clang-format'
+"Plug 'vim-scripts/The-NERD-commenter'
 
 call plug#end()
+
+lua <<EOF
+require'bufferline'.setup {
+    highlights = {
+        buffer_selected = {
+            gui = "bold"
+        }
+    }
+}
+require'dap-python'.setup('python')
+require'dap-python'.test_runner = 'pytest'
+require'nvim-tree'.setup()
+require('nvim-treesitter.configs').setup {
+    ensure_installed = "maintained",
+    highlight = {enable = true},
+    indent = {enable = true}
+}
+require'nvim-web-devicons'.setup()
+EOF
+
+"------------------------------------------------------------------------------
+" General configuration
+"------------------------------------------------------------------------------
+
+syntax enable
+
+set colorcolumn=80
+set expandtab
+set history=200
+set list
+set mouse=a
+set nowrap
+set number
+set shiftwidth=4
+set softtabstop=-1
+set termguicolors
+
+colorscheme tender
 
 "------------------------------------------------------------------------------
 " Plugin configuration
 "------------------------------------------------------------------------------
 
-" vim-airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+" lightline
+let g:lightline = {'colorscheme': 'tender'}
 
-" vim-airline
-let g:airline_theme = 'molokai'
-
-" NERDTree
-let NERDTreeQuitOnOpen = 1
+" nvim-tree 
+let g:nvim_tree_indent_markers = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_root_folder_modifier = ':~'
+let g:nvim_tree_add_trailing = 0
+let g:nvim_tree_group_empty = 1
+let g:nvim_tree_disable_window_picker = 1
+let g:nvim_tree_icon_padding = ' '
+let g:nvim_tree_symlink_arrow = ' >> '
+let g:nvim_tree_respect_buf_cwd = 1
+let g:nvim_tree_create_in_closed_folder = 0
+let g:nvim_tree_window_picker_exclude = {
+    \ 'filetype': ['notify', 'packer', 'qf'],
+    \ 'buftype': ['terminal']
+    \}
+let g:nvim_tree_special_files = {
+    \ 'README.md': 1,
+    \ 'Makefile': 1,
+    \ 'MAKEFILE': 1
+    \}
+let g:nvim_tree_show_icons = {
+    \ 'git': 1, 
+    \ 'folders': 0,
+    \ 'files': 0,
+    \ 'folder_arrows': 0
+    \}
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': '✗',
+    \   'staged': '✓',
+    \   'unmerged': '',
+    \   'renamed': '➜',
+    \   'untracked': '★',
+    \   'deleted': '',
+    \   'ignored': '◌'
+    \  },
+    \ 'folder': {
+    \   'arrow_open': '',
+    \   'arrow_closed': '',
+    \   'default': '',
+    \   'open': '',
+    \   'empty': '',
+    \   'empty_open': '',
+    \   'symlink': '',
+    \   'symlink_open': '',
+    \  }
+    \}
 
 " ctrlp
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_extensions = ['mixed', 'line']
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
 " livedown
 let g:livedown_autorun = 0
 let g:livedown_open = 1
 let g:livedown_port = 1337
-let g:livedown_browser = "vivaldi"
+let g:livedown_browser = 'firefox'
 
-" YouCompleteMe
-let g:ycm_python_binary_path = "python"
-
-" vimspector
-let g:vimspector_enable_mappings = 'HUMAN'
-sign define vimspectorBP text=🔴 texthl=Normal
-sign define vimspectorBPDisabled text=🔵 texthl=Normal
-sign define vimspectorPC text=🔶 texthl=SpellBad
-
-syntax on
-filetype off
-filetype plugin on
-filetype indent on
+" vista
+let g:vista_icon_indent = ['╰─▸ ', '├─▸ ']
+let g:vista_default_executive = 'ctags'
+let g:vista_executive_for = {'cpp': 'vim_lsp', 'php': 'vim_lsp'}
+let g:vista_ctags_cmd = {'haskell': 'hasktags -x -o - -c'}
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {'function': '\uf794', 'variable': '\uf71b'}
 
 "------------------------------------------------------------------------------
 " Keybindings
 "------------------------------------------------------------------------------
 
-noremap <Leader>s vip:sort<Cr>
-noremap <Leader>s :sort<Cr>gv
-noremap <S-h> :bprev<CR>
-noremap <S-l> :bnext<CR>
-noremap D :bp<bar>sp<bar>bn<bar>bd<CR>
-noremap <Leader>t :TagbarToggle<CR>
-noremap <Leader>n :NERDTreeToggle<Cr>
+" nvim-tree
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
 
-noremap <F2> :TNext<CR>
-noremap <F3> :TStep<CR>
-noremap <F5> :TContinue<CR>
-noremap <F6> :TFinish<CR>
-noremap <F10> :TToggleBreak<CR>
-noremap <F12> :TLocateCursor<CR>
+" Livedown
+nnoremap gm :LivedownToggle<CR>
 
-"------------------------------------------------------------------------------
-" File type configuration
-"------------------------------------------------------------------------------
+" vista
+nnoremap <C-v> :Vista!!<CR>
 
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
-autocmd FileType cuda set ft=c
+" nvim-dap-python
+nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
+nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
+vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
 
-"------------------------------------------------------------------------------
-" Code format
-"------------------------------------------------------------------------------
-
-"augroup autoformat_settings
-  "autocmd FileType bzl AutoFormatBuffer buildifier
-  "autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  "autocmd FileType dart AutoFormatBuffer dartfmt
-  "autocmd FileType go AutoFormatBuffer gofmt
-  "autocmd FileType gn AutoFormatBuffer gn
-  "autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-  "autocmd FileType java AutoFormatBuffer google-java-format
-  "autocmd FileType python AutoFormatBuffer yapf
-  "autocmd FileType rust AutoFormatBuffer rustfmt
-  "autocmd FileType vue AutoFormatBuffer prettier
-"augroup END
+" bufferline
+nnoremap <silent>[b :BufferLineCycleNext<CR>
+nnoremap <silent>b] :BufferLineCyclePrev<CR>
