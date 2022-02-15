@@ -9,13 +9,13 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'jacoborus/tender.vim'
-Plug 'liuchengxu/vista.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/tagbar'
 Plug 'shime/vim-livedown'
 
 "Plug 'google/vim-codefmt'
@@ -134,14 +134,9 @@ let g:livedown_open = 1
 let g:livedown_port = 1337
 let g:livedown_browser = 'firefox'
 
-" vista
-let g:vista_icon_indent = ['╰─▸ ', '├─▸ ']
-let g:vista_default_executive = 'ctags'
-let g:vista_executive_for = {'cpp': 'vim_lsp', 'php': 'vim_lsp'}
-let g:vista_ctags_cmd = {'haskell': 'hasktags -x -o - -c'}
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {"function": "\uf794", "variable": "\uf71b"}
+" tagbar
+let g:tagbar_no_status_line = 1
+let g:tagbar_autofocus = 1
 
 "------------------------------------------------------------------------------
 " Keybindings
@@ -155,8 +150,8 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 " Livedown
 nnoremap gm :LivedownToggle<CR>
 
-" vista
-nnoremap <C-v> :Vista!!<CR>
+" tagbar
+nnoremap <C-t> :TagbarToggle<CR>
 
 " nvim-dap-python
 nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
@@ -164,5 +159,5 @@ nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
 vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
 
 " bufferline
-nnoremap <silent>[b :BufferLineCycleNext<CR>
-nnoremap <silent>b] :BufferLineCyclePrev<CR>
+nnoremap <silent> <C-h> :BufferLineCyclePrev<CR>
+nnoremap <silent> <C-l> :BufferLineCycleNext<CR>
