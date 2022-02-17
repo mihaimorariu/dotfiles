@@ -7,23 +7,22 @@ call plug#begin()
 Plug 'akinsho/bufferline.nvim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'google/vim-maktaba'
 Plug 'itchyny/lightline.vim'
 Plug 'jacoborus/tender.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'mfussenegger/nvim-dap'
-Plug 'mfussenegger/nvim-dap-python'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'numToStr/Comment.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'puremourning/vimspector'
+Plug 'qpkorr/vim-bufkill'
 Plug 'preservim/tagbar'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'shime/vim-livedown'
-
-"Plug 'google/vim-codefmt'
-"Plug 'google/vim-glaive'
-"Plug 'google/vim-maktaba'
-"Plug 'majutsushi/tagbar'
-"Plug 'rhysd/vim-clang-format'
-"Plug 'vim-scripts/The-NERD-commenter'
 
 call plug#end()
 
@@ -35,8 +34,7 @@ require'bufferline'.setup {
         }
     }
 }
-require'dap-python'.setup('python')
-require'dap-python'.test_runner = 'pytest'
+require'Comment'.setup()
 require'nvim-tree'.setup()
 require('nvim-treesitter.configs').setup {
     ensure_installed = "maintained",
@@ -52,6 +50,7 @@ EOF
 
 syntax enable
 
+set autoindent
 set colorcolumn=80
 set expandtab
 set history=200
@@ -68,6 +67,9 @@ colorscheme tender
 "------------------------------------------------------------------------------
 " Plugin configuration
 "------------------------------------------------------------------------------
+
+" vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " lightline
 let g:lightline = {'colorscheme': 'tender'}
@@ -142,22 +144,19 @@ let g:tagbar_autofocus = 1
 " Keybindings
 "------------------------------------------------------------------------------
 
+inoremap <silent> <C-j> <C-x>
+inoremap <silent> <C-k> <C-a>
+
 " nvim-tree
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
+map <silent> <C-n> :NvimTreeToggle<CR>
 
 " Livedown
-nnoremap gm :LivedownToggle<CR>
+noremap <silent> gm :LivedownToggle<CR>
 
 " tagbar
-nnoremap <C-t> :TagbarToggle<CR>
-
-" nvim-dap-python
-nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
-nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
-vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
+map <silent> <C-t> :TagbarToggle<CR>
 
 " bufferline
-nnoremap <silent> <C-h> :BufferLineCyclePrev<CR>
-nnoremap <silent> <C-l> :BufferLineCycleNext<CR>
+map <silent> <C-h> :BufferLineCyclePrev<CR>
+map <silent> <C-l> :BufferLineCycleNext<CR>
+map <silent> <C-x> :BD<cr>
