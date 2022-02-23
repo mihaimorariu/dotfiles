@@ -12,7 +12,6 @@ Plug 'google/vim-glaive'
 Plug 'google/vim-maktaba'
 Plug 'itchyny/lightline.vim'
 Plug 'jacoborus/tender.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -35,11 +34,14 @@ require'bufferline'.setup {
     }
 }
 require'Comment'.setup()
-require'nvim-tree'.setup()
+require'nvim-tree'.setup {
+    view = {
+        hide_root_folder = true
+    }
+}
 require('nvim-treesitter.configs').setup {
     ensure_installed = "maintained",
-    highlight = {enable = true},
-    indent = {enable = true}
+    highlight = {enable = true}
 }
 require'nvim-web-devicons'.setup()
 EOF
@@ -50,7 +52,6 @@ EOF
 
 syntax enable
 
-set autoindent
 set colorcolumn=80
 set expandtab
 set history=200
@@ -144,8 +145,8 @@ let g:tagbar_autofocus = 1
 " Keybindings
 "------------------------------------------------------------------------------
 
-inoremap <silent> <C-j> <C-x>
-inoremap <silent> <C-k> <C-a>
+noremap <silent> <C-j> <C-x>
+noremap <silent> <C-k> <C-a>
 
 " nvim-tree
 map <silent> <C-n> :NvimTreeToggle<CR>
