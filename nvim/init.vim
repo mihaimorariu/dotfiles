@@ -13,7 +13,7 @@ Plug 'google/vim-maktaba'
 Plug 'itchyny/lightline.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'mcchrish/nnn.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -34,11 +34,6 @@ require'bufferline'.setup {
     }
 }
 require'Comment'.setup()
-require'nvim-tree'.setup {
-    view = {
-        hide_root_folder = true
-    }
-}
 require('nvim-treesitter.configs').setup {
     ensure_installed = "maintained",
     highlight = {enable = true}
@@ -141,6 +136,9 @@ let g:livedown_browser = 'firefox'
 let g:tagbar_no_status_line = 1
 let g:tagbar_autofocus = 1
 
+" nnn
+let g:nnn#layout = {'window': {'height': 0.5, 'width': 0.5, 'highlight': 'debug', 'border': 'sharp'}}
+
 "------------------------------------------------------------------------------
 " Keybindings
 "------------------------------------------------------------------------------
@@ -148,8 +146,8 @@ let g:tagbar_autofocus = 1
 noremap <silent> <C-j> <C-x>
 noremap <silent> <C-k> <C-a>
 
-" nvim-tree
-map <silent> <C-n> :NvimTreeToggle<CR>
+" nnn
+map <silent> <C-n> :NnnPicker<CR>
 
 " Livedown
 noremap <silent> gm :LivedownToggle<CR>
