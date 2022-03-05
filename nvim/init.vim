@@ -20,8 +20,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'puremourning/vimspector'
 Plug 'qpkorr/vim-bufkill'
 Plug 'preservim/tagbar'
-Plug 'rcarriga/nvim-dap-ui'
+Plug 'rcarriga/vim-ultest', {'do': ':UpdateRemotePlugins'}
 Plug 'shime/vim-livedown'
+Plug 'vim-test/vim-test'
 
 call plug#end()
 
@@ -52,6 +53,7 @@ set expandtab
 set history=200
 set list
 set mouse=a
+set noequalalways
 set nowrap
 set number
 set shiftwidth=4
@@ -139,6 +141,9 @@ let g:tagbar_autofocus = 1
 " nnn
 let g:nnn#layout = {'window': {'height': 0.5, 'width': 0.5, 'highlight': 'debug', 'border': 'sharp'}}
 
+" vim-ultest
+let test#python#pytest#options = "--color=yes"
+
 "------------------------------------------------------------------------------
 " Keybindings
 "------------------------------------------------------------------------------
@@ -159,3 +164,9 @@ map <silent> <C-t> :TagbarToggle<CR>
 map <silent> <C-h> :BufferLineCyclePrev<CR>
 map <silent> <C-l> :BufferLineCycleNext<CR>
 map <silent> <C-x> :BD<cr>
+
+" Window navigation
+map <silent> <A-h> <C-w>h
+map <silent> <A-j> <C-w>j
+map <silent> <A-k> <C-w>k
+map <silent> <A-l> <C-w>l
