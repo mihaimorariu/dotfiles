@@ -6,6 +6,7 @@ call plug#begin()
 
 Plug 'akinsho/bufferline.nvim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'danymat/neogen'
 Plug 'godlygeek/tabular'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
@@ -35,6 +36,10 @@ require'bufferline'.setup {
     }
 }
 require'Comment'.setup()
+require'neogen'.setup {
+    enabled = true,
+    input_after_comment = true
+}
 require('nvim-treesitter.configs').setup {
     ensure_installed = "maintained",
     highlight = {enable = true}
@@ -170,3 +175,9 @@ map <silent> <A-h> <C-w>h
 map <silent> <A-j> <C-w>j
 map <silent> <A-k> <C-w>k
 map <silent> <A-l> <C-w>l
+
+" vim-ultest
+map <silent> <leader>t :Ultest<CR>
+
+" neogen
+noremap <silent> <leader>d :Neogen<CR>
