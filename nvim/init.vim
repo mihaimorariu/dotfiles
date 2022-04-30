@@ -41,7 +41,7 @@ require'neogen'.setup {
     input_after_comment = true
 }
 require('nvim-treesitter.configs').setup {
-    ensure_installed = "maintained",
+    ensure_installed = {"bash", "c", "cpp", "cuda", "python", "vim"},
     highlight = {enable = true}
 }
 require'nvim-web-devicons'.setup()
