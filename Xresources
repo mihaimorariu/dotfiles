@@ -6,7 +6,7 @@ xft.lcdfilter:                lcddefault
 xft.rgba:                     rgb
 
 Xcursor.size: 16
-Xcursor.theme: ArchCursorComplete
+Xcursor.theme: Breeze
 
 xterm*background: #272822
 xterm*foreground: #d0d0d0
