@@ -15,7 +15,7 @@ set $DUNST_CONFIG            $HOME/.i3/dunstrc
 set $SCREEN_LOCK_PATH        $HOME/.dotfiles/bin/screenlock
 
 # Font family and size
-font pango:DejaVu Sans Mono for Powerline 9
+font pango:DejaVuSansMono Nerd Font Book 9
 
 # Set the modifier key (Win key)
 set $mod Mod4
@@ -168,7 +168,7 @@ client.background       #ffffff
 
 # Display workspaces and status bar
 bar {
-    font pango:DejaVu Sans Mono for Powerline, FontAwesome 9
+    font pango:DejaVuSansMono Nerd Font Book 9
     status_command $BUMBLEBEE_STATUS_PATH
     position top
     wheel_up_cmd nop
