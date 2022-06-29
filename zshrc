@@ -6,7 +6,8 @@ ZSH_LOCAL=$HOME/.zshrc.local
 ZSH_ALIASES=$HOME/.aliases
 
 # Configure oh-my-zsh.
-ZSH_THEME="gianu"
+ZSH_THEME="gruvbox"
+SOLARIZED_THEME="dark"
 DISABLE_AUTO_UPDATE="true"
 ENABLE_CORRECTION="false"
 
