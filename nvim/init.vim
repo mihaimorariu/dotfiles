@@ -7,6 +7,7 @@ call plug#begin()
 Plug 'akinsho/bufferline.nvim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'danymat/neogen'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'godlygeek/tabular'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
@@ -65,7 +66,8 @@ set shiftwidth=4
 set softtabstop=-1
 set termguicolors
 
-colorscheme tender
+set background=dark
+colorscheme gruvbox
 
 "------------------------------------------------------------------------------
 " Plugin configuration

@@ -10,20 +10,6 @@ set $WORKSPACE8    " doc "
 set $WORKSPACE9    " term "
 set $WORKSPACE0    " other "
 
-set $BLACK          #000000
-set $BLUE           #2196f3
-set $DARK_GRAY      #1d1f21
-set $GOLD           #f0e68c
-set $GOLDEN_ROD     #daa520
-set $NAVAJO_WHITE   #ffdead
-set $ORANGE_RED     #ff4500
-set $RED            #ff0000
-set $SANDY_BROWN    #f4a460
-set $SLATE_GRAY     #708090
-set $TOMATO         #ff6347
-set $WHITE          #ffffff
-set $YELLOW         #ffff00
-
 set $BUMBLEBEE_STATUS_PATH   $HOME/.local/bin/bumblebee-status
 set $DUNST_CONFIG            $HOME/.i3/dunstrc
 set $SCREEN_LOCK_PATH        $HOME/.dotfiles/bin/screenlock
@@ -172,12 +158,13 @@ bindsym $mod+Shift+a exec "$HOME/.i3/scripts/randr auto"
 # Window appearance
 for_window [class="^.*"] border pixel 1
 
-# Class                    Border         Backgr.        Text      Split
-client.focused_inactive    $DARK_GRAY     $DARK_GRAY     $WHITE    $WHITE
-client.focused             $BLUE          $BLUE          $WHITE    $WHITE
-client.unfocused           $DARK_GRAY     $DARK_GRAY     $WHITE    $WHITE
-client.urgent              $BLUE          $BLUE          $WHITE    $WHITE
-client.background          $WHITE
+client.focused          #665c54 #665c54 #eddbb2 #2e9ef4   #665c54
+client.focused_inactive #282828 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #3c3836 #3c3836 #a89984 #292d2e   #222222
+client.urgent           #cc241d #cc241d #ebdbb2 #cc241d   #cc241d
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
 
 # Display workspaces and status bar
 bar {
@@ -187,13 +174,13 @@ bar {
     wheel_up_cmd nop
     wheel_down_cmd nop
     colors {
-        separator             $WHITE
-        background            $DARK_GRAY
-        statusline            $DARK_GRAY
-        focused_workspace     $BLUE           $BLUE          $WHITE
-        active_workspace      $DARK_GRAY      $DARK_GRAY     $WHITE
-        inactive_workspace    $DARK_GRAY      $DARK_GRAY     $WHITE
-        urgent_workspace      $BLUE           $BLUE          $WHITE
+        background #3c3836
+        statusline #ebdbb2
+        separator  #666666
+        focused_workspace  #458588 #458588 #ebdbb2
+        active_workspace   #83a598 #83a598 #ebdbb2
+        inactive_workspace #504945 #504945 #ebdbb2
+        urgent_workspace   #cc241d #cc241d #504945
     }
 }
 

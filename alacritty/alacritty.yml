@@ -3,7 +3,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#232627'
+    background: '#282828'
     foreground: '#fcfcfc'
 
     dim_foreground: '#eff0f1'
