@@ -1,5 +1,5 @@
 font:
-  size: 6
+  size: 9
 colors:
   # Default colors
   primary:
@@ -43,3 +43,5 @@ colors:
     magenta: '#614a73'
     cyan: '#186c60'
     white: '#63686d'
+env:
+  WINIT_X11_SCALE_FACTOR: "1"
