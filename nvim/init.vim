@@ -4,7 +4,7 @@
 
 call plug#begin()
 
-Plug 'akinsho/bufferline.nvim'
+Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'danymat/neogen'
 Plug 'ellisonleao/gruvbox.nvim'
@@ -18,24 +18,20 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mcchrish/nnn.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numToStr/Comment.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'preservim/tagbar'
 Plug 'puremourning/vimspector'
 Plug 'qpkorr/vim-bufkill'
-Plug 'preservim/tagbar'
-Plug 'rcarriga/vim-ultest', {'do': ':UpdateRemotePlugins'}
+Plug 'roblillack/vim-bufferlist'
 Plug 'shime/vim-livedown'
 Plug 'vim-test/vim-test'
 
 call plug#end()
 
 lua <<EOF
-require'bufferline'.setup {
-    highlights = {
-        buffer_selected = {
-            gui = "bold"
-        }
-    }
-}
 require'Comment'.setup()
 require'neogen'.setup {
     enabled = true,
@@ -148,9 +144,6 @@ let g:tagbar_autofocus = 1
 " nnn
 let g:nnn#layout = {'window': {'height': 0.5, 'width': 0.5, 'highlight': 'debug', 'border': 'sharp'}}
 
-" vim-ultest
-let test#python#pytest#options = "--color=yes"
-
 "------------------------------------------------------------------------------
 " Keybindings
 "------------------------------------------------------------------------------
@@ -167,19 +160,14 @@ noremap <silent> gm :LivedownToggle<CR>
 " tagbar
 map <silent> <C-t> :TagbarToggle<CR>
 
-" bufferline
-map <silent> <C-h> :BufferLineCyclePrev<CR>
-map <silent> <C-l> :BufferLineCycleNext<CR>
-map <silent> <C-x> :BD<cr>
+" vim-bufferlist
+map <silent> <C-b> :call BufferList()<CR>
 
 " Window navigation
 map <silent> <A-h> <C-w>h
 map <silent> <A-j> <C-w>j
 map <silent> <A-k> <C-w>k
 map <silent> <A-l> <C-w>l
-
-" vim-ultest
-map <silent> <leader>t :Ultest<CR>
 
 " neogen
 noremap <silent> <leader>d :Neogen<CR>
