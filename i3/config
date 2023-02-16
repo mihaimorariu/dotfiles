@@ -193,4 +193,3 @@ exec --no-startup-id dwall -s tokyo                          # Set the wallpaper
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support # Start the GPG agent
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent        # Start geoclue
 exec --no-startup-id redshift                                # Start redshift
-
