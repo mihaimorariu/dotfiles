@@ -1,55 +1,69 @@
-"------------------------------------------------------------------------------
-" Plugins
-"------------------------------------------------------------------------------
+"==============================================================================
+" Plugin definition
+"==============================================================================
 
 call plug#begin()
 
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'danymat/neogen'
-Plug 'ellisonleao/gruvbox.nvim'
-Plug 'godlygeek/tabular'
+" Code formatter
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'google/vim-maktaba'
-Plug 'itchyny/lightline.vim'
-Plug 'jacoborus/tender.vim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'mcchrish/nnn.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'numToStr/Comment.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-neotest/neotest'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'preservim/tagbar'
-Plug 'puremourning/vimspector'
-Plug 'qpkorr/vim-bufkill'
-Plug 'roblillack/vim-bufferlist'
+
+" Markdown previews 
 Plug 'shime/vim-livedown'
-Plug 'vim-test/vim-test'
+
+" Code comments creator
+Plug 'numToStr/Comment.nvim'
+
+" Docstring creator
+Plug 'danymat/neogen'
+
+" Code completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Text alignment
+Plug 'godlygeek/tabular'
+
+" File icons
+Plug 'kyazdani42/nvim-web-devicons'
+
+" Status line
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+
+" Favorite theme
+Plug 'ellisonleao/gruvbox.nvim'
+
+" Treesitter-based code highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Symbols outline
+Plug 'stevearc/aerial.nvim'
+
+" Fuzzy file finder with preview window
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.1'}
+
+" File browser
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+
+" Debugging adapter and user interface
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
+Plug 'rcarriga/nvim-dap-ui'
+
+" LSP client (for symbols outline)
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
-lua <<EOF
-require'Comment'.setup()
-require'neogen'.setup {
-    enabled = true,
-    input_after_comment = true
-}
-require('nvim-treesitter.configs').setup {
-    ensure_installed = {"bash", "c", "cpp", "cuda", "python", "vim"},
-    highlight = {enable = true}
-}
-require'nvim-web-devicons'.setup()
-EOF
-
-"------------------------------------------------------------------------------
+"==============================================================================
 " General configuration
-"------------------------------------------------------------------------------
+"==============================================================================
 
 syntax enable
 
+set background=dark
 set colorcolumn=80
 set expandtab
 set history=200
@@ -59,115 +73,211 @@ set noequalalways
 set nowrap
 set number
 set shiftwidth=4
+set showtabline=2
 set softtabstop=-1
 set termguicolors
 
-set background=dark
 colorscheme gruvbox
 
-"------------------------------------------------------------------------------
+"==============================================================================
+" Plugin initialization
+"==============================================================================
+
+lua <<EOF
+
+require('Comment').setup()
+require('neogen').setup {
+    enabled = true,
+    input_after_comment = true,
+}
+require('nvim-treesitter.configs').setup {
+    ensure_installed = {
+        'bash',
+        'c',
+        'cpp',
+        'cuda',
+        'python',
+        'vim',
+    },
+    highlight = {
+        enable = true,
+    }
+}
+
+require'nvim-web-devicons'.setup()
+require('dap-python').setup()
+require('dapui').setup()
+require('telescope').load_extension 'file_browser'
+require('lspconfig').pyright.setup{}
+require('aerial').setup()
+
+EOF
+
+"==============================================================================
 " Plugin configuration
-"------------------------------------------------------------------------------
+"==============================================================================
 
-" vimspector
-let g:vimspector_enable_mappings = 'HUMAN'
+lua <<EOF
 
-" lightline
-let g:lightline = {'colorscheme': 'tender'}
+-------------------------------------------------------------------------------
+-- lightline
+-------------------------------------------------------------------------------
+vim.g['lightline'] = {
+    colorscheme = 'PaperColor',
+    active = {
+        left = {
+            {'mode', 'paste'},
+            {'readonly', 'filename', 'modified'},
+        }
+    },
+    tabline = {
+        left = {
+            {'buffers'},
+        },
+        right = {
+            {'close'},
+        }
+    },
+    component_expand = {
+        buffers = 'lightline#bufferline#buffers',
+    },
+    component_raw = {
+        buffers = 1,
+    },
+    component_type = {
+        buffers = 'tabsel',
+    },
+}
 
-" nvim-tree 
-let g:nvim_tree_indent_markers = 1
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_root_folder_modifier = ':~'
-let g:nvim_tree_add_trailing = 0
-let g:nvim_tree_group_empty = 1
-let g:nvim_tree_disable_window_picker = 1
-let g:nvim_tree_icon_padding = ' '
-let g:nvim_tree_symlink_arrow = ' >> '
-let g:nvim_tree_respect_buf_cwd = 1
-let g:nvim_tree_create_in_closed_folder = 0
-let g:nvim_tree_window_picker_exclude = {
-    \ 'filetype': ['notify', 'packer', 'qf'],
-    \ 'buftype': ['terminal']
-    \}
-let g:nvim_tree_special_files = {
-    \ 'README.md': 1,
-    \ 'Makefile': 1,
-    \ 'MAKEFILE': 1
-    \}
-let g:nvim_tree_show_icons = {
-    \ 'git': 1, 
-    \ 'folders': 0,
-    \ 'files': 0,
-    \ 'folder_arrows': 0
-    \}
-let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': '✗',
-    \   'staged': '✓',
-    \   'unmerged': '',
-    \   'renamed': '➜',
-    \   'untracked': '★',
-    \   'deleted': '',
-    \   'ignored': '◌'
-    \  },
-    \ 'folder': {
-    \   'arrow_open': '',
-    \   'arrow_closed': '',
-    \   'default': '',
-    \   'open': '',
-    \   'empty': '',
-    \   'empty_open': '',
-    \   'symlink': '',
-    \   'symlink_open': '',
-    \  }
-    \}
+-------------------------------------------------------------------------------
+-- nvim-dap/nvim-dap-ui
+-------------------------------------------------------------------------------
+local dap   = require('dap')
+local dapui = require('dapui')
 
-" ctrlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+dap.listeners.after.event_initialized['dapui_config'] = function()
+    dapui.open()
+end
+dap.listeners.before.event_terminated['dapui_config'] = function()
+    dapui.close()
+end
+dap.listeners.before.event_exited['dapui_config'] = function()
+    dapui.close()
+end
 
-" livedown
-let g:livedown_autorun = 0
-let g:livedown_open = 1
-let g:livedown_port = 1337
-let g:livedown_browser = 'firefox'
+vim.fn.sign_define('DapBreakpoint', {
+    text   = '🟥',
+    texthl = '',
+    linehl = '',
+    numhl  = '',
+})
+vim.fn.sign_define('DapStopped', {
+    text   = '▶️',
+    texthl = '',
+    linehl = '',
+    numhl  = '',
+})
 
-" tagbar
-let g:tagbar_no_status_line = 1
-let g:tagbar_autofocus = 1
+-- vim-livedown
+vim.g['livedown_autorun'] = 0
+vim.g['livedown_browser'] = 'firefox'
+vim.g['livedown_open']    = 1
+vim.g['livedown_port']    = 1337
 
-" nnn
-let g:nnn#layout = {'window': {'height': 0.5, 'width': 0.5, 'highlight': 'debug', 'border': 'sharp'}}
+-- tagbar
+vim.g['tagbar_no_status_line'] = 1
+vim.g['tagbar_autofocus']      = 1
+vim.g['tagbar_autopreview']    = 1
 
-"------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-- coc
+-------------------------------------------------------------------------------
+
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.updatetime = 300
+vim.opt.signcolumn = 'yes'
+
+EOF
+
+"==============================================================================
 " Keybindings
-"------------------------------------------------------------------------------
+"==============================================================================
 
-noremap <silent> <C-j> <C-x>
-noremap <silent> <C-k> <C-a>
+lua <<EOF
 
-" nnn
-map <silent> <C-n> :NnnPicker<CR>
+function _G.check_back_space()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
 
-" Livedown
-noremap <silent> gm :LivedownToggle<CR>
+local keyset = vim.keymap.set
+local opts = {
+    silent           = true,
+    noremap          = true,
+    expr             = true,
+    replace_keycodes = false,
+}
 
-" tagbar
-map <silent> <C-t> :TagbarToggle<CR>
+-------------------------------------------------------------------------------
+-- aerial
+-------------------------------------------------------------------------------
+keyset('n', '<leader>a', '<cmd>AerialToggle!<CR>')
 
-" vim-bufferlist
-map <silent> <C-b> :call BufferList()<CR>
+-------------------------------------------------------------------------------
+-- nvim-dap-ui
+-------------------------------------------------------------------------------
+keyset('n', '<F5>',      require('dap').continue)
+keyset('n', '<F6>',      require('dap').terminate)
+keyset('n', '<F10>',     require('dap').step_over)
+keyset('n', '<F11>',     require('dap').step_into)
+keyset('n', '<F12>',     require('dap').step_out)
+keyset('n', '<leader>b', require('dap').toggle_breakpoint)
 
-" Window navigation
-map <silent> <A-h> <C-w>h
-map <silent> <A-j> <C-w>j
-map <silent> <A-k> <C-w>k
-map <silent> <A-l> <C-w>l
+-------------------------------------------------------------------------------
+-- telescope-file-browser
+-------------------------------------------------------------------------------
+keyset(
+    'n',
+    '<space>fb',
+    ':Telescope file_browser path=%:p:h select_buffer=true<CR>'
+)
 
-" neogen
-noremap <silent> <leader>d :Neogen<CR>
+-------------------------------------------------------------------------------
+-- telescope
+-------------------------------------------------------------------------------
+keyset('n', '<leader>ff', ':Telescope find_files<CR>')
+keyset('n', '<leader>fg', ':Telescope live_grep<CR>')
+keyset('n', '<leader>fb', ':Telescope buffers<CR>')
+keyset('n', '<leader>fh', ':Telescope help_tags<CR>')
+
+-------------------------------------------------------------------------------
+-- vim-livedown
+-------------------------------------------------------------------------------
+keyset('n', '<leader>l', ':LivedownToggle<CR>')
+keyset('n', '<leader>l', ':LivedownToggle<CR>')
+
+-------------------------------------------------------------------------------
+-- neogen
+-------------------------------------------------------------------------------
+keyset('n', '<leader>d', ':Neogen<CR>')
+
+-------------------------------------------------------------------------------
+-- coc
+-------------------------------------------------------------------------------
+
+keyset(
+    'i',
+    '<TAB>',
+    'coc#pum#visible() ? coc#pum#next(1) : ' ..
+    'v:lua.check_back_space() ? "<TAB>" : coc#refresh()',
+    opts
+)
+keyset(
+    'i',
+    '<S-TAB>',
+    [[coc#pum#visible() ? coc#pum#prev(1) : '\<C-h>']],
+    opts
+)
+
+EOF
