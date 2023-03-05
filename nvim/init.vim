@@ -62,12 +62,13 @@ call plug#end()
 " General configuration
 "==============================================================================
 
-syntax enable
+syntax on
 
 set background=dark
 set colorcolumn=80
 set expandtab
 set history=200
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
 set mouse=a
 set noequalalways
@@ -76,6 +77,7 @@ set number
 set shiftwidth=4
 set showtabline=2
 set softtabstop=-1
+set syntax=whitespace
 set termguicolors
 
 colorscheme srcery
@@ -86,7 +88,16 @@ colorscheme srcery
 
 lua <<EOF
 
+require('aerial').setup({
+    layout = {
+        min_width = {30, 0.1},
+    },
+    open_automatic = true,
+})
 require('Comment').setup()
+require('dap-python').setup()
+require('dapui').setup()
+require('lspconfig').pyright.setup{}
 require('neogen').setup {
     enabled = true,
     input_after_comment = true,
@@ -104,13 +115,20 @@ require('nvim-treesitter.configs').setup {
         enable = true,
     }
 }
-
-require'nvim-web-devicons'.setup()
-require('dap-python').setup()
-require('dapui').setup()
-require('telescope').load_extension 'file_browser'
-require('lspconfig').pyright.setup{}
-require('aerial').setup()
+require('nvim-web-devicons').setup()
+require('telescope').setup({
+    extensions = {
+        aerial = {
+            show_nesting = {
+                ['_'] = false,
+                json = true,
+                yaml = true,
+            },
+        },
+    },
+})
+require('telescope').load_extension('aerial')
+require('telescope').load_extension('file_browser')
 
 EOF
 
@@ -223,7 +241,7 @@ local opts = {
 -------------------------------------------------------------------------------
 -- aerial
 -------------------------------------------------------------------------------
-keyset('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+keyset('n', '<leader>a', ':AerialToggle<CR>')
 
 -------------------------------------------------------------------------------
 -- nvim-dap-ui
@@ -247,6 +265,7 @@ keyset(
 -------------------------------------------------------------------------------
 -- telescope
 -------------------------------------------------------------------------------
+keyset('n', '<leader>fa', ':Telescope aerial<CR>')
 keyset('n', '<leader>ff', ':Telescope find_files<CR>')
 keyset('n', '<leader>fg', ':Telescope live_grep<CR>')
 keyset('n', '<leader>fb', ':Telescope buffers<CR>')
