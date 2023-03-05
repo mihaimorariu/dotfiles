@@ -238,10 +238,16 @@ local opts = {
     replace_keycodes = false,
 }
 
+keyset('n', '<leader>n', ':bn<CR>')
+keyset('n', '<leader>p', ':bp<CR>')
+keyset('n', '<leader>x', ':bd<CR>')
+
 -------------------------------------------------------------------------------
 -- aerial
 -------------------------------------------------------------------------------
-keyset('n', '<leader>a', ':AerialToggle<CR>')
+keyset('n', '{',         ': AerialPrev<CR>')
+keyset('n', '}',         ': AerialNext<CR>')
+keyset('n', '<leader>a', ': AerialToggle<CR>')
 
 -------------------------------------------------------------------------------
 -- nvim-dap-ui
