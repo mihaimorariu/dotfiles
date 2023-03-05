@@ -1,18 +1,53 @@
 # Set variables
-set $WORKSPACE1    " dev "
-set $WORKSPACE2    " web "
-set $WORKSPACE3    " chat "
-set $WORKSPACE4    " mail "
-set $WORKSPACE5    " audio "
-set $WORKSPACE6    " video "
-set $WORKSPACE7    " vis "
-set $WORKSPACE8    " doc "
-set $WORKSPACE9    " term "
-set $WORKSPACE0    " other "
+set $workspace1    " dev "
+set $workspace2    " web "
+set $workspace3    " chat "
+set $workspace4    " mail "
+set $workspace5    " audio "
+set $workspace6    " video "
+set $workspace7    " vis "
+set $workspace8    " doc "
+set $workspace9    " term "
+set $workspace0    " other "
 
-set $BUMBLEBEE_STATUS_PATH   $HOME/.local/bin/bumblebee-status
-set $DUNST_CONFIG            $HOME/.i3/dunstrc
-set $SCREEN_LOCK_PATH        $HOME/.dotfiles/bin/screenlock
+set $bumblebee_status_path   $HOME/.local/bin/bumblebee-status
+set $dunst_config            $HOME/.i3/dunstrc
+set $screen_lock_path        $HOME/.dotfiles/bin/screenlock
+
+set $black #1C1B19
+set $bright_black #918175
+
+set $red #EF2F27
+set $bright_red #F75341
+
+set $green #519F50
+set $bright_green #98BC37
+
+set $yellow #FBB829
+set $bright_yellow #FED06E
+
+set $blue #2C78BF
+set $bright_blue #68A8E4
+
+set $magenta #E02C6D
+set $bright_magenta #FF5C8F
+
+set $cyan #0AAEB3
+set $bright_cyan #53FDE9
+
+set $white #D0BFA1
+set $bright_white #FCE8C3
+
+set $orange #D75F00
+set $bright_orange #FF8700
+
+set $xgray1 #262626
+set $xgray2 #303030
+set $xgray3 #3A3A3A
+set $xgray4 #444444
+set $xgray5 #4E4E4E
+
+set $hard_black #121212
 
 # Font family and size
 font pango:DejaVuSansMono Nerd Font Book 9
@@ -37,7 +72,7 @@ bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi"
 bindsym $mod+Shift+d exec --no-startup-id "rofi -combi-modi window,run -show combi"
 
 # Lock screen
-bindsym $mod+Shift+o exec --no-startup-id "$SCREEN_LOCK_PATH"
+bindsym $mod+Shift+o exec --no-startup-id "$screen_lock_path"
 
 # Print screen
 bindsym Print exec --no-startup-id gscreenshot
@@ -101,28 +136,28 @@ bindsym $mod+Shift+space floating toggle
 #}
 
 # Switch to workspace
-bindsym $mod+1 workspace $WORKSPACE1
-bindsym $mod+2 workspace $WORKSPACE2
-bindsym $mod+3 workspace $WORKSPACE3
-bindsym $mod+4 workspace $WORKSPACE4
-bindsym $mod+5 workspace $WORKSPACE5
-bindsym $mod+6 workspace $WORKSPACE6
-bindsym $mod+7 workspace $WORKSPACE7
-bindsym $mod+8 workspace $WORKSPACE8
-bindsym $mod+9 workspace $WORKSPACE9
-bindsym $mod+0 workspace $WORKSPACE0
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace0
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $WORKSPACE1
-bindsym $mod+Shift+2 move container to workspace $WORKSPACE2
-bindsym $mod+Shift+3 move container to workspace $WORKSPACE3
-bindsym $mod+Shift+4 move container to workspace $WORKSPACE4
-bindsym $mod+Shift+5 move container to workspace $WORKSPACE5
-bindsym $mod+Shift+6 move container to workspace $WORKSPACE6
-bindsym $mod+Shift+7 move container to workspace $WORKSPACE7
-bindsym $mod+Shift+8 move container to workspace $WORKSPACE8
-bindsym $mod+Shift+9 move container to workspace $WORKSPACE9
-bindsym $mod+Shift+0 move container to workspace $WORKSPACE0
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace0
 
 bindsym $mod+Control+h move workspace to output left
 bindsym $mod+Control+k move workspace to output up
@@ -158,29 +193,32 @@ bindsym $mod+Shift+a exec "$HOME/.i3/scripts/randr auto"
 # Window appearance
 for_window [class="^.*"] border pixel 1
 
-client.focused          #665c54 #665c54 #eddbb2 #2e9ef4   #665c54
-client.focused_inactive #282828 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #3c3836 #3c3836 #a89984 #292d2e   #222222
-client.urgent           #cc241d #cc241d #ebdbb2 #cc241d   #cc241d
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-client.background       #ffffff
+# Colors                border        background  text          indicator child_border
+client.focused          $bright_black $xgray3     $yellow       $yellow   $bright_black
+client.focused_inactive $xgray3       $xgray3     $bright_black $xgray3   $xgray3
+client.unfocused        $xgray1       $xgray1     $bright_black $xgray1   $xgray1
+client.urgent           $red          $xgray1     $red          $red      $red
+client.placeholder      $xgray3       $hard_black $bright_black $xgray3   $xgray3
+client.background       $black
 
 # Display workspaces and status bar
 bar {
     font pango:DejaVuSansMono Nerd Font Book 9
-    status_command $BUMBLEBEE_STATUS_PATH
+    status_command $bumblebee_status_path
     position top
     wheel_up_cmd nop
     wheel_down_cmd nop
     colors {
-        background #3c3836
-        statusline #ebdbb2
-        separator  #666666
-        focused_workspace  #458588 #458588 #ebdbb2
-        active_workspace   #83a598 #83a598 #ebdbb2
-        inactive_workspace #504945 #504945 #ebdbb2
-        urgent_workspace   #cc241d #cc241d #504945
+        background $black
+        statusline $white
+        separator  $white
+
+        # Colors           border        background   text
+        focused_workspace  $bright_black $xgray3      $yellow
+        active_workspace   $xgray3       $xgray3      $bright_black
+        inactive_workspace $xgray3       $xgray1      $bright_black
+        urgent_workspace   $red          $red         $black
+        binding_mode       $magenta      $magenta     $bright_white
     }
 }
 
@@ -188,7 +226,7 @@ bar {
 exec --no-startup-id nm-applet                               # Start the network manager applet
 exec --no-startup-id fcitx                                   # Start the input mode
 exec --no-startup-id blueman-applet                          # Start the bluetooth applet
-exec --no-startup-id dunst -config $DUNST_CONFIG             # Start the launch menu
+exec --no-startup-id dunst -config $dunst_config             # Start the launch menu
 exec --no-startup-id "$HOME/.i3/scripts/randr home           # Set the wallpaper
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support # Start the GPG agent
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent        # Start geoclue

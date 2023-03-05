@@ -31,8 +31,9 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
-" Favorite theme
+" Colorschemes
 Plug 'ellisonleao/gruvbox.nvim'
+Plug 'srcery-colors/srcery-vim'
 
 " Treesitter-based code highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -77,7 +78,7 @@ set showtabline=2
 set softtabstop=-1
 set termguicolors
 
-colorscheme gruvbox
+colorscheme srcery
 
 "==============================================================================
 " Plugin initialization
@@ -123,7 +124,7 @@ lua <<EOF
 -- lightline
 -------------------------------------------------------------------------------
 vim.g['lightline'] = {
-    colorscheme = 'PaperColor',
+    colorscheme = 'srcery',
     active = {
         left = {
             {'mode', 'paste'},
