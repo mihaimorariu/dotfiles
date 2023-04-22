@@ -48,11 +48,6 @@ Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.1'}
 " File browser
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 
-" Debugging adapter and user interface
-Plug 'mfussenegger/nvim-dap'
-Plug 'mfussenegger/nvim-dap-python'
-Plug 'rcarriga/nvim-dap-ui'
-
 " LSP client (for symbols outline)
 Plug 'neovim/nvim-lspconfig'
 
@@ -73,7 +68,7 @@ set list
 set mouse=a
 set noequalalways
 set nowrap
-set number
+set number relativenumber
 set shiftwidth=4
 set showtabline=2
 set softtabstop=-1
@@ -81,6 +76,7 @@ set syntax=whitespace
 set termguicolors
 
 colorscheme srcery
+packadd termdebug
 
 "==============================================================================
 " Plugin initialization
@@ -95,8 +91,8 @@ require('aerial').setup({
     open_automatic = true,
 })
 require('Comment').setup()
-require('dap-python').setup()
-require('dapui').setup()
+--require('dap-python').setup()
+--require('dapui').setup()
 require('lspconfig').pyright.setup{}
 require('neogen').setup {
     enabled = true,
@@ -169,44 +165,12 @@ vim.g['lightline'] = {
 }
 
 -------------------------------------------------------------------------------
--- nvim-dap/nvim-dap-ui
--------------------------------------------------------------------------------
-local dap   = require('dap')
-local dapui = require('dapui')
-
-dap.listeners.after.event_initialized['dapui_config'] = function()
-    dapui.open()
-end
-dap.listeners.before.event_terminated['dapui_config'] = function()
-    dapui.close()
-end
-dap.listeners.before.event_exited['dapui_config'] = function()
-    dapui.close()
-end
-
-vim.fn.sign_define('DapBreakpoint', {
-    text   = '🟥',
-    texthl = '',
-    linehl = '',
-    numhl  = '',
-})
-vim.fn.sign_define('DapStopped', {
-    text   = '▶️',
-    texthl = '',
-    linehl = '',
-    numhl  = '',
-})
-
 -- vim-livedown
+-------------------------------------------------------------------------------
 vim.g['livedown_autorun'] = 0
 vim.g['livedown_browser'] = 'firefox'
 vim.g['livedown_open']    = 1
 vim.g['livedown_port']    = 1337
-
--- tagbar
-vim.g['tagbar_no_status_line'] = 1
-vim.g['tagbar_autofocus']      = 1
-vim.g['tagbar_autopreview']    = 1
 
 -------------------------------------------------------------------------------
 -- coc
@@ -248,16 +212,6 @@ keyset('n', '<leader>x', ':bd<CR>')
 keyset('n', '{',         ': AerialPrev<CR>')
 keyset('n', '}',         ': AerialNext<CR>')
 keyset('n', '<leader>a', ': AerialToggle<CR>')
-
--------------------------------------------------------------------------------
--- nvim-dap-ui
--------------------------------------------------------------------------------
-keyset('n', '<F5>',      require('dap').continue)
-keyset('n', '<F6>',      require('dap').terminate)
-keyset('n', '<F10>',     require('dap').step_over)
-keyset('n', '<F11>',     require('dap').step_into)
-keyset('n', '<F12>',     require('dap').step_out)
-keyset('n', '<leader>b', require('dap').toggle_breakpoint)
 
 -------------------------------------------------------------------------------
 -- telescope-file-browser
