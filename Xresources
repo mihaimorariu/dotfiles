@@ -11,7 +11,7 @@ Xcursor.theme: Breeze
 xterm*background: #272822
 xterm*foreground: #d0d0d0
 xterm*cursorColor: #d0d0d0
-xterm*faceName: DejaVuSansMono Nerd Font
+xterm*faceName: JetBrainsMono NFP
 xterm*faceSize: 9
 
 xterm*color0: #272822

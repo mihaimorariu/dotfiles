@@ -1,6 +1,9 @@
 import:
   - ~/.config/alacritty/themes/srcery_alacritty.yml
 font:
+  normal:
+    family: JetBrainsMono NFP
+    style: Regular
   size: 9
 env:
   WINIT_X11_SCALE_FACTOR: "1"

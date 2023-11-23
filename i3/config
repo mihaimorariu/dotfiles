@@ -50,7 +50,7 @@ set $xgray5 #4E4E4E
 set $hard_black #121212
 
 # Font family and size
-font pango:DejaVuSansMono Nerd Font Book 9
+font pango:JetBrainsMono NFP 9
 
 # Set the modifier key (Win key)
 set $mod Mod4
@@ -203,7 +203,6 @@ client.background       $black
 
 # Display workspaces and status bar
 bar {
-    font pango:DejaVuSansMono Nerd Font Book 9
     status_command $bumblebee_status_path
     position top
     wheel_up_cmd nop
