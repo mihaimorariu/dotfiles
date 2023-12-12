@@ -3,38 +3,57 @@
 dotfiles_dir=$(realpath -s $(dirname $0))
 
 # dotfiles
-ln -sf $dotfiles_dir ~/.dotfiles
+ln -s $dotfiles_dir ~/.dotfiles
 
-## nvim
-#git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim +NvChadUpdate .
-#ln -sf $dotfiles_dir/nvim/lua/core/default_config.lua ~/.config/nvim/lua/core/default_config.lua
+# nvim
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim +NvChadUpdate .
+ln -s $dotfiles_dir/nvim/lua/core/default_config.lua ~/.config/nvim/lua/core/default_config.lua
+
+# dwall
+pikaur -S dwall-git --noconfirm
 
 # oh-my-zsh
 pikaur -S oh-my-zsh-git --noconfirm
 
 # xprofile
-ln -sf $dotfiles_dir/xprofile ~/.xprofile
+ln -s $dotfiles_dir/xprofile ~/.xprofile
 
 # xterm.ti
-ln -sf $dotfiles_dir/xterm.ti ~/.xterm.ti
+ln -s $dotfiles_dir/xterm.ti ~/.xterm.ti
 
 # aliases
-ln -sf $dotfiles_dir/aliases ~/.aliases
+ln -s $dotfiles_dir/aliases ~/.aliases
 
 # Xresources
-ln -sf $dotfiles_dir/Xresources ~/.Xresources
+ln -s $dotfiles_dir/Xresources ~/.Xresources
 
 # xinitrc
-ln -sf $dotfiles_dir/xinitrc ~/.xinitrc
+ln -s $dotfiles_dir/xinitrc ~/.xinitrc
 
 # gitconfig
-ln -sf $dotfiles_dir/gitconfig ~/.gitconfig
+ln -s $dotfiles_dir/gitconfig ~/.gitconfig
 
 # alacritty
-ln -sf $dotfiles_dir/alacritty.ti ~/.alacritty.ti
+ln -s $dotfiles_dir/alacritty.ti ~/.alacritty.ti
+ln -s $dotfiles_dir/alacritty ~/.config/alacritty
 
 # i3
-ln -sf $dotfiles_dir/i3 ~/.i3
+ln -s $dotfiles_dir/i3 ~/.i3
 
 # zshrc
-ln -sf $dotfiles_dir/zshrc ~/.zshrc
+ln -s $dotfiles_dir/zshrc ~/.zshrc
+
+# bumblebee-status
+ln -s $dotfiles_dir/bumblebee-status.conf ~/.config/bumblebee-status.conf
+
+# zathura
+ln -s $dotfiles_dir/zathura ~/.config/zathura
+
+# dunst
+ln -s $dotfiles_dir/dunst ~/.config/dunst
+
+# tmux
+ln -s $dotfiles_dir/tmux.conf ~/.tmux.conf
+
+# rofi
+ln -s $dotfiles_dir/rofi ~/.config/rofi
