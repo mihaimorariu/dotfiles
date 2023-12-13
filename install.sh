@@ -6,8 +6,7 @@ dotfiles_dir=$(realpath -s $(dirname $0))
 ln -s $dotfiles_dir ~/.dotfiles
 
 # nvim
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim +NvChadUpdate .
-ln -s $dotfiles_dir/nvim/lua/core/default_config.lua ~/.config/nvim/lua/core/default_config.lua
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 
 # dwall
 pikaur -S dwall-git --noconfirm
