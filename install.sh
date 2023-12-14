@@ -7,6 +7,7 @@ ln -s $dotfiles_dir ~/.dotfiles
 
 # nvim
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+ln -s $dotfiles_dir/nvim ~/.config/nvim/lua/user
 
 # dwall
 pikaur -S dwall-git --noconfirm
