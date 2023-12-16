@@ -23,24 +23,4 @@ return {
       })
     end,
   },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    -- overrides `require("mason-nvim-dap").setup(...)`
-    opts = function(_, opts)
-      -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.handlers = {
-        python = function(config)
-            config.adapters = {
-	            type = "executable",
-	            command = "/usr/bin/python3",
-	            args = {
-		            "-m",
-		            "debugpy.adapter",
-	            },
-            }
-            require('mason-nvim-dap').default_setup(config)
-        end,
-      }
-    end,
-  },
 }
