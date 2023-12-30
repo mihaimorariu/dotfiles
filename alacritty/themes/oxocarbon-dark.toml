@@ -22,10 +22,6 @@ yellow = "#ffe97b"
 background = "#161616"
 foreground = "#ffffff"
 
-[colors.search.footer_bar]
-background = "#262626"
-foreground = "#ffffff"
-
 [colors.search.matches]
 background = "#ee5396"
 foreground = "CellBackground"
