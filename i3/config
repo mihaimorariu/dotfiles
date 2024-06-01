@@ -52,9 +52,9 @@ bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Control volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Change focus
 bindsym $mod+h focus left
@@ -165,7 +165,7 @@ client.placeholder      #000000  #ffffff     #fae8a4  #000000    #ffffff
 
 # Display workspaces and status bar
 bar {
-    status_command $HOME/.local/bin/bumblebee-status
+    status_command bumblebee-status
     position top
     wheel_up_cmd nop
     wheel_down_cmd nop
