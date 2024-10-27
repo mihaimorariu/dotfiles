@@ -1,4 +1,3 @@
-import = ["/home/mmorariu/.config/alacritty/themes/oxocarbon-dark.toml"]
 
 [env]
 WINIT_X11_SCALE_FACTOR = "1"
@@ -9,3 +8,6 @@ size = 9
 [font.normal]
 family = "JetBrainsMono NFP"
 style = "Regular"
+
+[general]
+import = ["/home/mmorariu/.config/alacritty/themes/oxocarbon-dark.toml"]
