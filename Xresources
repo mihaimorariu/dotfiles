@@ -12,7 +12,7 @@ xterm*background: #272822
 xterm*foreground: #d0d0d0
 xterm*cursorColor: #d0d0d0
 xterm*faceName: JetBrainsMono NFP
-xterm*faceSize: 9
+xterm*faceSize: 10
 
 xterm*color0: #272822
 xterm*color1: #d0d0d0

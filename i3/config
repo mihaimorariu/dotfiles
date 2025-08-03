@@ -11,7 +11,7 @@ set $workspace9    " term "
 set $workspace0    " other "
 
 # Font family and size
-font pango:JetBrainsMono NFP 9
+font pango:JetBrainsMono NFP 10
 
 # Set the modifier key (Win key)
 set $mod Mod4
