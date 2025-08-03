@@ -6,7 +6,7 @@ ZSH_LOCAL=$HOME/.zshrc.local
 ZSH_ALIASES=$HOME/.aliases
 
 # Configure oh-my-zsh.
-ZSH_THEME="bira"
+ZSH_THEME="intheloop"
 SOLARIZED_THEME="dark"
 DISABLE_AUTO_UPDATE="true"
 ENABLE_CORRECTION="false"
