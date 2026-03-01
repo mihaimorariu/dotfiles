@@ -4,4 +4,5 @@
 [ "$1" == "home" ] && xrandr --output eDP-1 --auto --output DP-1 --auto --left-of eDP-1
 [ "$1" == "auto" ] && xrandr --auto
 
-dwall -s island
+#dwall -s island
+feh --bg-scale $HOME/.dotfiles/.wallpaper.jpg
