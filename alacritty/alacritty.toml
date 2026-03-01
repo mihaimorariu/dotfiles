@@ -9,5 +9,13 @@ size = 10
 family = "JetBrainsMono NFP"
 style = "Regular"
 
+[window]
+opacity = 0.9
+
 [general]
-import = ["/home/mmorariu/.config/alacritty/themes/oxocarbon-dark.toml"]
+import = ["/home/mmorariu/.config/alacritty/themes/blood-moon.toml"]
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
