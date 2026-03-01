@@ -152,7 +152,8 @@ bindsym $mod+Shift+m exec "$HOME/.i3/scripts/randr home"
 bindsym $mod+Shift+a exec "$HOME/.i3/scripts/randr auto"
 
 # Window appearance
-for_window [class="^.*"] border normal 0
+for_window [class=".*"] border pixel 0
+
 gaps outer 4
 gaps inner 4
 
