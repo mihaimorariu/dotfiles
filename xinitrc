@@ -17,3 +17,5 @@ xset b off
 
 # Start the window manager.
 exec i3
+
+exec picom --daemon

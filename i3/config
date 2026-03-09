@@ -11,7 +11,7 @@ set $workspace9    " term "
 set $workspace0    " other "
 
 # Font family and size
-font pango:JetBrainsMono NFP 11
+font pango:JetBrainsMono NFP 10
 
 # Set the modifier key (Win key)
 set $mod Mod4
@@ -166,27 +166,25 @@ client.placeholder      #000000  #ffffff     #fae8a4  #000000    #ffffff
 
 # Display workspaces and status bar
 bar {
-    status_command bumblebee-status
+    status_command i3status-rs $HOME/.dotfiles/i3-status-config.toml
     position top
-    wheel_up_cmd nop
-    wheel_down_cmd nop
     colors {
-        background #1c1b19
-
-        # Colors           border   background  text
-        focused_workspace  #fae8a4  #fae8a4     #1c1b19
-        active_workspace   #fae8a4  #fae8a4     #1c1b19
-        inactive_workspace #fae8a4  #fae8a4     #1c1b19
-        urgent_workspace   #cc4a22  #cc4a22     #ffffff
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
     }
 }
 
 # Execute on startup
-exec --no-startup-id nm-applet                               # Start the network manager applet
-exec --no-startup-id fcitx                                   # Start the input mode
-exec --no-startup-id blueman-applet                          # Start the bluetooth applet
-exec --no-startup-id dunst -config $HOME/.i3/dunstrc         # Start the launch menu
-exec --no-startup-id "$HOME/.i3/scripts/randr home           # Set the wallpaper
-exec --no-startup-id gpg-agent --daemon --enable-ssh-support # Start the GPG agent
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent        # Start geoclue
-exec --no-startup-id redshift                                # Start redshift
+exec --no-startup-id picom --daemon                                         # Window composite
+exec --no-startup-id nm-applet                                              # Network manager applet
+exec --no-startup-id fcitx5                                                 # Input mode
+exec --no-startup-id blueman-applet                                         # Bluetooth applet
+exec --no-startup-id dunst -config $HOME/.i3/dunstrc                        # Launch menu
+exec --no-startup-id "$HOME/.i3/scripts/randr home                          # Set the wallpaper
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent                       # Start geoclue
+exec --no-startup-id redshift                                               # Start redshift
