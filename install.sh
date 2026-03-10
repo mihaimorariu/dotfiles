@@ -15,6 +15,9 @@ pikaur -S dwall-git --noconfirm
 # oh-my-zsh
 pikaur -S oh-my-zsh-git --noconfirm
 
+# rofi-themes-collection
+pikaur -S rofi-themes-collection-git --noconfirm
+
 # xprofile
 ln -s $dotfiles_dir/xprofile ~/.xprofile
 
@@ -54,6 +57,9 @@ ln -s $dotfiles_dir/dunst ~/.config/dunst
 
 # tmux
 ln -s $dotfiles_dir/tmux.conf ~/.tmux.conf
+
+# rofi-themes-collection
+ln -s /usr/share/rofi ~/.local/share/rofi
 
 # rofi
 ln -s $dotfiles_dir/rofi ~/.config/rofi
