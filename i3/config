@@ -158,11 +158,11 @@ gaps outer 4
 gaps inner 4
 
 # Colors                border   background  text     indicator  child_border
-client.focused          #fae8a4  #fae8a4     #1c1b19  #fae8a4    #fae8a4
-client.focused_inactive #fae8a4  #fae8a4     #1c1b19  #fae8a4    #fae8a4
-client.unfocused        #fae8a4  #fae8a4     #1c1b19  #fae8a4    #fae8a4
-client.urgent           #fae8a4  #fae8a4     #1c1b19  #fae8a4    #fae8a4
-client.placeholder      #000000  #ffffff     #fae8a4  #000000    #ffffff
+client.focused          #222222  #222222     #dddddd  #222222    #222222
+client.focused_inactive #222222  #222222     #dddddd  #222222    #222222
+client.unfocused        #222222  #222222     #dddddd  #222222    #222222
+client.urgent           #222222  #222222     #dddddd  #222222    #222222
+client.placeholder      #000000  #ffffff     #222222  #000000    #ffffff
 
 # Display workspaces and status bar
 bar {
