@@ -1,3 +1,9 @@
-configuration {
+//@theme "/usr/share/rofi/themes/rounded-red-dark.rasi"
+//@theme "/usr/share/rofi/themes/fullscreen-preview.rasi"
+//@theme "/home/mmorariu/.local/share/rofi/themes/squared-material-red.rasi"
+//@theme "/usr/share/rofi/themes/sidebar-v2.rasi"
+@theme "/home/mmorariu/.local/share/rofi/themes/tokyonight-fullscreen-4k.rasi"
+
+* {
   font: "JetBrainsMono NFP 10";
 }
