@@ -20,6 +20,9 @@ pikaur -S rofi-themes-collection-git --noconfirm
 # i3-volume
 pikaur -S i3-volume --noconfirm
 
+# polybar
+ln -s $dotfiles_dir/polybar ~/.config/polybar
+
 # xprofile
 ln -s $dotfiles_dir/xprofile ~/.xprofile
 
