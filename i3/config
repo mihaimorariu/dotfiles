@@ -1,14 +1,14 @@
 # Set variables
-set $workspace1    " dev "
-set $workspace2    " web "
-set $workspace3    " chat "
-set $workspace4    " mail "
-set $workspace5    " audio "
-set $workspace6    " video "
-set $workspace7    " vis "
-set $workspace8    " doc "
-set $workspace9    " term "
-set $workspace0    " other "
+set $workspace1 "dev"
+set $workspace2 "web"
+set $workspace3 "chat"
+set $workspace4 "mail"
+set $workspace5 "audio"
+set $workspace6 "video"
+set $workspace7 "vis"
+set $workspace8 "doc"
+set $workspace9 "term"
+set $workspace0 "other"
 
 # Font family and size
 font pango:JetBrainsMono NFP 10
@@ -29,23 +29,13 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # Start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi"
-bindsym $mod+Shift+d exec --no-startup-id "rofi -combi-modi window,run -show combi"
-
-# Lock screen
-bindsym $mod+Shift+o exec --no-startup-id "$HOME/.dotfiles/bin/screenlock"
+bindsym $mod+d exec --no-startup-id "$HOME/.config/polybar/shapes/scripts/launcher.sh"
 
 # Print screen
 bindsym Print exec --no-startup-id xfce4-screenshooter
 
-# Enter sleep mode
-bindsym $mod+Shift+s exec --no-startup-id "systemctl suspend"
-
-# Power off
-bindsym $mod+Shift+p exec --no-startup-id "poweroff"
-
-# Exit i3
-bindsym $mod+Shift+e exec --no-startup-id "i3-msg exit"
+# Power menu
+bindsym $mod+Shift+p exec --no-startup-id "$HOME/.config/polybar/shapes/scripts/powermenu.sh"
 
 # Control screen brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
@@ -147,9 +137,11 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r exec "i3-msg restart"
 
 # Reconfigure screen for different environments
-bindsym $mod+Shift+w exec "$HOME/.i3/scripts/randr work"
 bindsym $mod+Shift+m exec "$HOME/.i3/scripts/randr home"
 bindsym $mod+Shift+a exec "$HOME/.i3/scripts/randr auto"
+
+# Select wireless network
+bindsym $mod+Shift+w exec "$HOME/.config/polybar/shapes/wifi-menu.sh"
 
 # Window appearance
 for_window [class=".*"] border pixel 0
@@ -165,26 +157,28 @@ client.urgent           #222222  #222222     #dddddd  #222222    #222222
 client.placeholder      #000000  #ffffff     #222222  #000000    #ffffff
 
 # Display workspaces and status bar
-bar {
-    status_command i3status-rs $HOME/.dotfiles/i3-status-config.toml
-    position top
-    colors {
-        separator #666666
-        background #222222
-        statusline #dddddd
-        focused_workspace #0088cc #0088cc #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #ffffff
-        urgent_workspace #2f343a #900000 #ffffff
-    }
-}
+#bar {
+#    i3bar_command i3bar --transparency
+#    status_command i3status-rs $HOME/.dotfiles/i3-status-config.toml
+#    position top
+#    colors {
+#        separator #666666
+#        background #222222cc
+#        statusline #dddddd
+#        focused_workspace #0088cc #0088cc #ffffff
+#        active_workspace #333333 #333333 #ffffff
+#        inactive_workspace #333333 #333333 #ffffff
+#        urgent_workspace #2f343a #900000 #ffffff
+#    }
+#}
 
 # Execute on startup
-exec --no-startup-id picom --daemon                                         # Window composite
-exec --no-startup-id nm-applet                                              # Network manager applet
-exec --no-startup-id fcitx5                                                 # Input mode
-exec --no-startup-id blueman-applet                                         # Bluetooth applet
-exec --no-startup-id dunst -config $HOME/.i3/dunstrc                        # Launch menu
-exec --no-startup-id "$HOME/.i3/scripts/randr home                          # Set the wallpaper
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent                       # Start geoclue
-exec --no-startup-id redshift                                               # Start redshift
+exec --no-startup-id picom --daemon                            # Window composite
+#exec --no-startup-id nm-applet                                 # Network manager applet
+exec --no-startup-id fcitx5                                    # Input mode
+#exec --no-startup-id blueman-applet                            # Bluetooth applet
+exec --no-startup-id dunst -config $HOME/.i3/dunstrc           # Launch menu
+exec --no-startup-id $HOME/.i3/scripts/randr home              # Set the wallpaper
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent          # Start geoclue
+exec --no-startup-id redshift                                  # Start redshift
+exec --no-startup-id $HOME/.config/polybar/launch.sh --shapes  # Start polybar
