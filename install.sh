@@ -17,6 +17,9 @@ pikaur -S oh-my-zsh-git --noconfirm
 # rofi-themes-collection
 pikaur -S rofi-themes-collection-git --noconfirm
 
+# i3-volume
+pikaur -S i3-volume --noconfirm
+
 # xprofile
 ln -s $dotfiles_dir/xprofile ~/.xprofile
 

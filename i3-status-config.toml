@@ -52,7 +52,19 @@ block = "sound"
 
 [[block.click]]
 button = "left"
+cmd = "i3-volume mute"
+
+[[block.click]]
+button = "right"
 cmd = "pavucontrol"
+
+[[block.click]]
+button = "wheel_up"
+cmd = "i3-volume up 10"
+
+[[block.click]]
+button = "wheel_down"
+cmd = "i3-volume down 10"
 
 [[block]]
 block = "time"
