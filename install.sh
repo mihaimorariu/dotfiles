@@ -35,6 +35,9 @@ ln -s $dotfiles_dir/xinitrc ~/.xinitrc
 # gitconfig
 ln -s $dotfiles_dir/gitconfig ~/.gitconfig
 
+# picom
+ln -s $dotfiles_dir/picom ~/.config/picom
+
 # alacritty
 ln -s $dotfiles_dir/alacritty.ti ~/.alacritty.ti
 ln -s $dotfiles_dir/alacritty ~/.config/alacritty
