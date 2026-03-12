@@ -31,6 +31,12 @@ bindsym $mod+Shift+q kill
 # Start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id "$HOME/.config/polybar/shapes/scripts/launcher.sh"
 
+# Switch style
+bindsym $mod+Shift+s exec --no-startup-id "$HOME/.config/polybar/shapes/scripts/style-switch.sh"
+
+# Switch style
+bindsym $mod+Shift+c exec --no-startup-id "$HOME/.config/polybar/shapes/scripts/color-switch.sh"
+
 # Print screen
 bindsym Print exec --no-startup-id xfce4-screenshooter
 
@@ -131,7 +137,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 
 # Restart i3
 bindsym $mod+Shift+r exec "i3-msg restart"
