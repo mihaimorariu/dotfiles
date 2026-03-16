@@ -187,4 +187,4 @@ exec --no-startup-id dunst -config $HOME/.i3/dunstrc           # Launch menu
 exec --no-startup-id $HOME/.i3/scripts/randr home              # Set the wallpaper
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent          # Start geoclue
 exec --no-startup-id redshift                                  # Start redshift
-exec --no-startup-id $HOME/.config/polybar/launch.sh --shapes  # Start polybar
+exec --no-startup-id $HOME/.config/polybar/shapes/launch.sh    # Start polybar
