@@ -1,3 +1,5 @@
 cmus/search-history
 cmus/command-history
 cmus/cache
+ranger/plugins/__init__.py
+ranger/plugins/__pycache__
