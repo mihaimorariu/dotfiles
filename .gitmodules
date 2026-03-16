@@ -1,0 +1,6 @@
+[submodule "ranger/plugins/ranger-archives"]
+	path = ranger/plugins/ranger-archives
+	url = https://github.com/maximtrp/ranger-archives.git
+[submodule "ranger/plugins/ranger-devicons2"]
+	path = ranger/plugins/ranger-devicons2
+	url = https://github.com/cdump/ranger-devicons2.git

@@ -5,6 +5,9 @@ dotfiles_dir=$(realpath -s $(dirname $0))
 # dotfiles
 ln -s $dotfiles_dir ~/.dotfiles
 
+# ranger
+ln -s $dotfiles_dir/ranger ~/.config/ranger
+
 # nvim
 ln -s $dotfiles_dir/nvim ~/.config/nvim
 
