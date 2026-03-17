@@ -24,7 +24,8 @@ pikaur -S rofi-themes-collection-git --noconfirm
 pikaur -S i3-volume --noconfirm
 
 # polybar
-ln -s $dotfiles_dir/polybar ~/.config/polybar
+git clone git@github.com:mihaimorariu/polybar-themes.git /tmp/polybar-themes
+echo 1 | bash /tmp/polybar-themes/setup.sh
 
 # xprofile
 ln -s $dotfiles_dir/xprofile ~/.xprofile
