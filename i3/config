@@ -10,6 +10,8 @@ set $workspace8 "doc"
 set $workspace9 "term"
 set $workspace0 "other"
 
+set $polybar_theme docky
+
 # Font family and size
 font pango:JetBrainsMono NFP 10
 
@@ -29,19 +31,19 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # Start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id "$HOME/.config/polybar/shapes/scripts/launcher.sh"
+bindsym $mod+d exec --no-startup-id "$HOME/.config/polybar/$polybar_theme/scripts/launcher.sh"
 
 # Switch style
-bindsym $mod+Shift+s exec --no-startup-id "$HOME/.config/polybar/shapes/scripts/style-switch.sh"
+bindsym $mod+Shift+s exec --no-startup-id "$HOME/.config/polybar/$polybar_theme/scripts/style-switch.sh"
 
 # Switch style
-bindsym $mod+Shift+c exec --no-startup-id "$HOME/.config/polybar/shapes/scripts/color-switch.sh"
+bindsym $mod+Shift+c exec --no-startup-id "$HOME/.config/polybar/$polybar_theme/scripts/color-switch.sh"
 
 # Print screen
 bindsym Print exec --no-startup-id xfce4-screenshooter
 
 # Power menu
-bindsym $mod+Shift+p exec --no-startup-id "$HOME/.config/polybar/shapes/scripts/powermenu.sh"
+bindsym $mod+Shift+p exec --no-startup-id "$HOME/.config/polybar/$polybar_theme/scripts/powermenu.sh"
 
 # Control screen brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
@@ -140,14 +142,14 @@ bindsym $mod+r mode "resize"
 #bindsym $mod+Shift+c reload
 
 # Restart i3
-bindsym $mod+Shift+r exec "i3-msg restart"
+bindsym $mod+Shift+r exec "i3-msg reload; i3-msg restart; $HOME/.config/polybar/launch.sh --$polybar_theme"
 
 # Reconfigure screen for different environments
 bindsym $mod+Shift+m exec "$HOME/.i3/scripts/randr home"
 bindsym $mod+Shift+a exec "$HOME/.i3/scripts/randr auto"
 
 # Select wireless network
-bindsym $mod+Shift+w exec "$HOME/.config/polybar/shapes/wifi-menu.sh"
+bindsym $mod+Shift+w exec "$HOME/.config/polybar/wifi-menu.sh $polybar_theme"
 
 # Window appearance
 for_window [class=".*"] border pixel 0
@@ -179,12 +181,12 @@ client.placeholder      #000000  #ffffff     #222222  #000000    #ffffff
 #}
 
 # Execute on startup
-exec --no-startup-id picom --daemon                            # Window composite
-#exec --no-startup-id nm-applet                                 # Network manager applet
-exec --no-startup-id fcitx5                                    # Input mode
-#exec --no-startup-id blueman-applet                            # Bluetooth applet
-exec --no-startup-id dunst -config $HOME/.i3/dunstrc           # Launch menu
-exec --no-startup-id $HOME/.i3/scripts/randr home              # Set the wallpaper
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent          # Start geoclue
-exec --no-startup-id redshift                                  # Start redshift
-exec --no-startup-id $HOME/.config/polybar/shapes/launch.sh    # Start polybar
+exec --no-startup-id picom --daemon                                     # Window composite
+#exec --no-startup-id nm-applet                                         # Network manager applet
+exec --no-startup-id fcitx5                                             # Input mode
+#exec --no-startup-id blueman-applet                                    # Bluetooth applet
+exec --no-startup-id dunst -config $HOME/.i3/dunstrc                    # Launch menu
+exec --no-startup-id $HOME/.i3/scripts/randr home                       # Set the wallpaper
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent                   # Start geoclue
+exec --no-startup-id redshift                                           # Start redshift
+exec --no-startup-id $HOME/.config/polybar/launch.sh --$polybar_theme   # Start polybar
