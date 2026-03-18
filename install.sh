@@ -23,6 +23,9 @@ pikaur -S rofi-themes-collection-git --noconfirm
 # i3-volume
 pikaur -S i3-volume --noconfirm
 
+# rmpc
+ln -s $dotfiles_dir/rmpc ~/.config/rmpc
+
 # polybar
 git clone git@github.com:mihaimorariu/polybar-themes.git /tmp/polybar-themes
 echo 1 | bash /tmp/polybar-themes/setup.sh
