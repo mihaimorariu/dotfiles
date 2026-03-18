@@ -12,7 +12,7 @@ ln -s $dotfiles_dir/ranger ~/.config/ranger
 ln -s $dotfiles_dir/nvim ~/.config/nvim
 
 # dwall
-pikaur -S dwall-git --noconfirm
+#pikaur -S dwall-git --noconfirm
 
 # oh-my-zsh
 pikaur -S oh-my-zsh-git --noconfirm
@@ -62,19 +62,19 @@ ln -s $dotfiles_dir/i3 ~/.i3
 ln -s $dotfiles_dir/zshrc ~/.zshrc
 
 # bumblebee-status
-ln -s $dotfiles_dir/bumblebee-status.conf ~/.config/bumblebee-status.conf
-
-# zathura
-ln -s $dotfiles_dir/zathura ~/.config/zathura
+#ln -s $dotfiles_dir/bumblebee-status.conf ~/.config/bumblebee-status.conf
 
 # dunst
 ln -s $dotfiles_dir/dunst ~/.config/dunst
+
+# zathura
+ln -s $dotfiles_dir/zathura ~/.config/zathura
 
 # tmux
 ln -s $dotfiles_dir/tmux.conf ~/.tmux.conf
 
 # rofi-themes-collection
-ln -s /usr/share/rofi ~/.local/share/rofi
+#ln -s /usr/share/rofi ~/.local/share/rofi
 
 # rofi
-ln -s $dotfiles_dir/rofi ~/.config/rofi
+#ln -s $dotfiles_dir/rofi ~/.config/rofi
