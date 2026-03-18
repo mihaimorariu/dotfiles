@@ -185,7 +185,7 @@ exec --no-startup-id picom --daemon                                     # Window
 #exec --no-startup-id nm-applet                                         # Network manager applet
 exec --no-startup-id fcitx5                                             # Input mode
 #exec --no-startup-id blueman-applet                                    # Bluetooth applet
-exec --no-startup-id dunst -config $HOME/.i3/dunstrc                    # Launch menu
+exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc          # Launch menu
 exec --no-startup-id $HOME/.i3/scripts/randr home                       # Set the wallpaper
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent                   # Start geoclue
 exec --no-startup-id redshift                                           # Start redshift
