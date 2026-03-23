@@ -149,7 +149,7 @@ bindsym $mod+Shift+m exec "$HOME/.i3/scripts/randr home"
 bindsym $mod+Shift+a exec "$HOME/.i3/scripts/randr auto"
 
 # Select wireless network
-bindsym $mod+Shift+w exec "$HOME/.config/polybar/wifi-menu.sh $polybar_theme"
+#bindsym $mod+Shift+w exec "$HOME/.config/polybar/wifi-menu.sh $polybar_theme"
 
 # Window appearance
 for_window [class=".*"] border pixel 0
@@ -182,9 +182,9 @@ client.placeholder      #000000  #ffffff     #222222  #000000    #ffffff
 
 # Execute on startup
 exec --no-startup-id picom --daemon                                     # Window composite
-#exec --no-startup-id nm-applet                                         # Network manager applet
+exec --no-startup-id nm-applet                                          # Network manager applet
 exec --no-startup-id fcitx5                                             # Input mode
-#exec --no-startup-id blueman-applet                                    # Bluetooth applet
+exec --no-startup-id blueman-applet                                     # Bluetooth applet
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc          # Launch menu
 exec --no-startup-id $HOME/.i3/scripts/randr home                       # Set the wallpaper
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent                   # Start geoclue
