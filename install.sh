@@ -52,8 +52,11 @@ ln -s $dotfiles_dir/gitconfig ~/.gitconfig
 ln -s $dotfiles_dir/picom ~/.config/picom
 
 # alacritty
-ln -s $dotfiles_dir/alacritty.ti ~/.alacritty.ti
-ln -s $dotfiles_dir/alacritty ~/.config/alacritty
+#ln -s $dotfiles_dir/alacritty.ti ~/.alacritty.ti
+#ln -s $dotfiles_dir/alacritty ~/.config/alacritty
+
+# kitty
+ln -s $dotfiles_dir/kitty ~/.config/kitty
 
 # i3
 ln -s $dotfiles_dir/i3 ~/.i3
