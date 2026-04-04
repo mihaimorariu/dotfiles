@@ -1,0 +1,34 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "e84f4fe"
+hash = "91937a4a9b779eabc6983e258befdfe9"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "e84f4fe"
+hash = "6fa6a05a81c98dd000fbca3cca6e9682"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:zoom"
+rev = "e84f4fe"
+hash = "fa268cb59989a87780605fdcfb8d99a9"
+
+[[plugin.deps]]
+use = "AnirudhG07/nbpreview"
+rev = "b504594"
+hash = "b83919985400521dee78e1c352b5d9db"
+
+[[flavor.deps]]
+use = "malick-tammal/monokai"
+rev = "7e709d4"
+hash = "f929d5c5c7fdf1c0aa231c1f49dae88"
+
+[[flavor.deps]]
+use = "dangooddd/kanagawa"
+rev = "04985d1"
+hash = "c69a63981e254a3a06a11c2bf0e6af1d"
+
+[[flavor.deps]]
+use = "6ruby1/eldritch"
+rev = "7b5bf34"
+hash = "d73a2192b13f0267461d5424a7f10cd1"
