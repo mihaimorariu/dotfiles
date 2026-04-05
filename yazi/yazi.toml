@@ -1,2 +1,3 @@
-[plugin]
-prepend_previewers = [{ name = "*.ipynb", run = "nbpreview" }]
+[[plugin.prepend_previewers]]
+name = "*.ipynb"
+run = 'piper -- nbpreview --no-paging --nerd-font --decorated --no-files --unicode --color --images --color-system=standard --theme=ansi_dark "$1"'
