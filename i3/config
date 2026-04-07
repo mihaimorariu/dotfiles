@@ -145,8 +145,8 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+r exec "i3-msg reload; i3-msg restart; $HOME/.config/polybar/launch.sh --$polybar_theme"
 
 # Reconfigure screen for different environments
-bindsym $mod+Shift+m exec "$HOME/.i3/scripts/randr home"
-bindsym $mod+Shift+a exec "$HOME/.i3/scripts/randr auto"
+bindsym $mod+Shift+m exec "$HOME/.i3/scripts/randr home; $HOME/.config/polybar/launch.sh --$polybar_theme"
+bindsym $mod+Shift+a exec "$HOME/.i3/scripts/randr auto; $HOME/.config/polybar/launch.sh --$polybar_theme"
 
 # Select wireless network
 #bindsym $mod+Shift+w exec "$HOME/.config/polybar/wifi-menu.sh $polybar_theme"
