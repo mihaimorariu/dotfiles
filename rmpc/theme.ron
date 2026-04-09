@@ -1,0 +1,317 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    default_album_art_path: None,
+    format_tag_separator: " | ",
+    browser_column_widths: [30, 30, 40 ],
+    background_color: "black",
+    text_color: "white",
+    header_background_color: None,
+    modal_background_color: None,
+    modal_backdrop: true,
+    preview_label_style: (fg: "yellow"),
+    preview_metadata_group_style: (fg: "yellow", modifiers: "Bold"),
+    highlighted_item_style: (fg: "#FFBF46"),
+    current_item_style: (fg: "black", bg: "#8ACB88", modifiers: "Bold"),
+    borders_style: (fg: "#648381"),
+    highlight_border_style: (fg: "#648381"),
+    symbols: (
+        song: "🎵",
+        dir: "📂",
+        playlist: "🎼",
+        marker: "📌",
+        ellipsis: "~",
+        song_style: None,
+        dir_style: None,
+        playlist_style: None,
+    ),
+
+    header: (
+        rows: [
+            ( /* start stauts| volume */
+                left: [
+                    (kind: Text("🮉 ")),
+                    (kind: Property(Status(StateV2(playing_label: "  Playing ", paused_label: "  Paused  ", stopped_label: "  Stopped ", playing_style: (fg: "#FFBF46") , stopped_style: (fg: "white", modifiers: "Dim"))))), 
+                    (kind: Text(" 🮉"))
+                ], 
+                center: [], 
+                right: [
+                    (kind: Text("🮉 ")),
+                    (kind: Property(Widget(Volume))),
+                    (kind: Text(" 🮉 ")),
+                ]
+            ), /* end stauts| volume */
+            ( /* start elapsed | playlist count */
+                left: [
+                    (kind: Text(" ")),
+                    (kind: Property(Status(Elapsed))), 
+                    (kind: Text(" | ")), 
+                    (kind: Property(Status(Duration)))
+                ], 
+                center: [], 
+                right: [
+                    (kind: Text("Songs Count: ")),
+                    (kind: Property(Song(Position))),
+                    (kind: Text(" of ")),
+                    (kind: Property(Status(QueueLength()))),
+                    (kind: Text(" "))
+                ]
+            ), /* end elapsed | playlist count */
+            ( /* start audioformat | playlist duration */
+                left: [
+                    (kind: Text(" ")),
+                    (kind: Property(Song(FileExtension))),
+                    (kind: Text(" @")),
+                    (kind: Property(Status(Bitrate))),
+                    (kind: Text(" kbps"))   
+                ], 
+                center: [], 
+                right: [
+                    (kind: Text("Playtime: ")),
+                    (kind: Property(Status(QueueTimeTotal()))),
+                    (kind: Text(" "))
+                ]
+            ), /* end audioformat | playlist duration */
+            ( /* start audiorate | reproduction controls */
+                left: [
+                    (kind: Text(" ")),
+                    (kind: Property(Song(SampleRate()))),
+                    (kind: Text("Hz | ")),
+                    (kind: Property(Song(Bits()))), 
+                    (kind: Text("bits | ")),
+                    (kind: Property(Song(Channels()))),
+                    (kind: Text("ch"))
+                ], 
+                center: [], 
+                right: [
+                    (kind: Property(Song(Other("genre"))), style: (fg: "white"), default: (kind: Text("Unknown Genre"), style: (modifiers: "Dim"))),
+                    (kind: Text(" "))
+                ]
+            ), /* end audiorate | reproduction controls */
+            ( /* start blank */
+                left: [
+                    (kind: Text(" Track: "), style: (fg: "white")),
+                    (
+                    kind: Property(Song(Other("track"))), style: (fg: "white"), 
+                    default: (kind: Text("1"), style: (fg: "white"))
+                    ),
+                    (kind: Text(" | Disc: "), style: (fg: "white")),
+                    (
+                    kind: Property(Song(Other("disc"))), style: (fg: "white"), 
+                    default: (kind: Text("1"), style: (fg: "white"))
+                    ),
+                ], 
+                center: [], 
+                right: [
+                    (kind: Text("|"),style: (fg: "dark_gray")),
+                    (kind: Property(Status(RepeatV2(on_label: " RPT ", off_label: " RPT ",
+                        on_style: (fg: "black", bg: "white"),
+                        off_style: (fg: "dark_gray"))))),
+                    (kind: Text("|"),style: (fg: "dark_gray")),
+                    (kind: Property(Status(RandomV2(on_label: " SFL ", off_label: " SFL ",
+                        on_style: (fg: "black", bg: "white"),
+                        off_style: (fg: "dark_gray"))))),
+                    (kind: Text("|"),style: (fg: "dark_gray")),
+                    (kind: Property(Status(ConsumeV2(on_label: " CSa " , off_label: " CSM ", oneshot_label: " CS¹ ",
+                        on_style: (fg: "black", bg: "white"),
+                        oneshot_style: (fg: "black", bg: "white"),
+                        off_style: (fg: "dark_gray"))))),
+                    (kind: Text("|"),style: (fg: "dark_gray")),
+                    (kind: Property(Status(SingleV2(on_label: " SGL ", off_label: " SGL ", oneshot_label: " SL¹ ", off_oneshot_label: " SL1 ",
+                        on_style: (fg: "black", bg: "white"),
+                        oneshot_style: (fg: "black", bg: "white"),
+                        off_style: (fg: "dark_gray"))))),
+                    (kind: Text("|"),style: (fg: "dark_gray"))
+                ]
+            ), /* end blank */
+            ( /* start blank */
+                left: [], center: [], right: []
+            ), /* end blank */
+            ( /* start title */
+                left: [],
+                center: [
+                    (kind: Property(Song(Title)), style: (fg: "#FFBF46"), default: (kind: Text("Unknow Title"), style: (fg: "white", modifiers: "Dim"))),
+                    (kind: Transform(Replace(content: (kind: Sticker("like")), replacements: [(match: "0", replace: (kind: Text(" 🩶"))), (match: "1", replace: (kind: Text(" 💙"))), (match: "2", replace: (kind: Text(" ❤️")))])))
+                ],
+                right: []
+            ), /* end title */
+            ( /* start artist */
+                left: [], 
+                center: [
+                    (kind: Property(Song(Artist)), default: (kind: Text("Unknown Artist"), style: (fg: "white", modifiers: "Dim")))
+                ], 
+                right: []
+            ), /* end artist */
+            ( /* start album */
+                left: [], 
+                center: [
+                    (kind: Property(Song(Album)), style: (fg: "#8ACB88"), default: (kind: Text("Unknown Album"), style: (fg: "white", modifiers: "Dim"))),
+                    (kind: Text(" | "), style: (fg: "white", modifiers: "Dim")),
+                    (kind: Property(Song(Other("date"))), style:(fg: "#8ACB88"), default: (kind: Text("Unknown Date"), style: (fg: "white", modifiers: "Dim")))
+                ], 
+                right: []
+            ), /* end album */
+            ( /* start albumartist */
+                left: [], 
+                center: [
+                    (
+                        kind: Property(Song(Other("albumartist"))), style: (fg: "white"), default: (kind: Property(Song(Artist)), style: (fg: "white"),
+                        default: (kind: Text("Unknown Album Artist"), style: (fg: "white", modifiers: "Dim")))
+                    )
+                ], 
+                right: []
+            ), /* end albumartist */
+            ( /* start composer */
+                left: [], 
+                center: [
+                            (kind: Property(Song(Other("composer"))),style: (fg: "#648381"), default: (kind: Text("Unknown Composer"), style: (fg: "white", modifiers: "Dim")))
+                ], 
+                right: []
+            ), /* end composer */
+        ],
+    ),
+    level_styles: (
+        info: (fg: "cyan", bg: "black"),
+        warn: (fg: "yellow", bg: "black"),
+        error: (fg: "red", bg: "black"),
+        debug: (fg: "light_green", bg: "black"),
+        trace: (fg: "magenta", bg: "black"),
+    ),
+    progress_bar: (
+        symbols: ["█", "█", "🮀", " ", "█"], //
+        track_style: (bg: "#8ACB88"),
+        elapsed_style: (fg: "#8ACB88"),
+        thumb_style: (fg: "#8ACB88", bg: "#E4FDE1"),
+        use_track_when_empty: true,
+        borders: "TOP",
+    ),
+    scrollbar: (
+        symbols: [" ", "█", "", ""],
+        track_style: (bg: "#8ACB88"),
+        ends_style: (),
+        thumb_style: (fg: "#E4FDE1"),
+    ),
+    tab_bar: (
+        active_style: (fg: "#E4FDE1", bg: "#648381", modifiers: "Bold"),
+        inactive_style: (fg: "dark_gray"),
+    ),
+    lyrics: (
+        timestamp: false
+    ),
+    browser_song_format: [
+        (
+            kind: Group([
+                (kind: Property(Track)),
+                (kind: Text(" ")),
+            ])
+        ),
+        (
+           kind: Group([
+                (kind: Property(Artist)),
+                (kind: Text(" - ")),
+                (kind: Property(Title)),
+            ]),
+            default: (kind: Property(Filename))
+        ),
+    ],
+    song_table_format: [
+        (
+            prop: (kind: Property(Artist),
+                default: (kind: Text("Unknown Artist"), style: (fg: "white", modifiers: "Dim") )
+            ),
+            label_prop: (kind: Text("Artist")),
+            width: "20%",
+        ),
+        (
+            prop: (kind: Property(Title),
+                default: (kind: Text("Unknown Title"), style: (fg: "white", modifiers: "Dim") )
+            ),
+            label_prop: (kind: Text("Title")),
+            width: "40%",
+        ),
+        (
+            prop: (kind: Property(Album),
+                default: (kind: Text("Unknown Album "), style: (fg: "white", modifiers: "Dim") )
+            ),
+            label_prop: (kind: Text("Album")),
+            width: "33%",
+        ),
+        (
+            prop: (kind: Property(Duration),
+                default: (kind: Text("-"))
+            ),
+            label_prop: (kind: Text("Duration")),
+            width: "7%",
+            alignment: Right,
+        ),
+        (
+            prop: (kind: Transform(Replace(content: (kind: Sticker("rating")), replacements: [
+            (match:  "0", replace: (kind: Group([(kind: Text("0") )]))),
+            (match:  "1", replace: (kind: Group([(kind: Text("1") )]))),
+            (match:  "2", replace: (kind: Group([(kind: Text("2") )]))),
+            (match:  "3", replace: (kind: Group([(kind: Text("3") )]))),
+            (match:  "4", replace: (kind: Group([(kind: Text("4") )]))),
+            (match:  "5", replace: (kind: Group([(kind: Text("5") )]))),
+            (match:  "6", replace: (kind: Group([(kind: Text("6") )]))),
+            (match:  "7", replace: (kind: Group([(kind: Text("7") )]))),
+            (match:  "8", replace: (kind: Group([(kind: Text("8") )]))),
+            (match:  "9", replace: (kind: Group([(kind: Text("9") )]))),
+            (match: "10", replace: (kind: Group([(kind: Text("A") )]))),
+            ])), default: (kind: Text("#"), style: (fg: "dark_gray") )),
+            width: "5",
+            label: "Rating",
+            alignment: Center,
+                label_prop: (kind: Group([
+                    (kind: Text("Rtg")),
+                ]))
+        ),
+        (
+            prop: (kind: Sticker("playCount"),
+                default: (kind: Text("0"))),
+            width: "3",
+            alignment: Center,
+            label: "PCn"
+        ),
+    ],
+    layout: Split(
+        direction: Vertical,
+        panes: [
+            (
+                size: "14",
+                pane: Split(
+                    direction: Horizontal,
+                    panes: [
+                        (
+                            size: "35",
+                            bordeders: None,
+                            vertical_align: Center,
+                            horizontal_align: Center,
+                            pane: Pane(AlbumArt),
+                        ),
+                        (
+                            size: "100%",
+                            pane: Split(
+                                direction: Vertical,
+                                panes: [
+                                    (
+                                        size: "12",
+                                        pane: Pane(Header),
+                                    ),
+                                    (
+                                        size: "2",
+                                        pane: Pane(Tabs),
+                                    ),
+                                ]
+                            )
+                        ),
+                    ]
+                ),
+            ),
+            (
+                size: "100%",
+                pane: Pane(TabContent),
+            ),
+        ],
+    ),
+)
